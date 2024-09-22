@@ -1,0 +1,11 @@
+id,operation,level,levelProb,portionRequest,combine,combineProb,combineID,gpaProb,minGpa,maxGpa,minFri,maxFri
+0,plus,1,50,2,TRUE,20,1&2,50,1,10,1,10
+1,sub,1,50,2,TRUE,20,2,50,1,10,1,10
+2,mult,2,30,4,TRUE,20,3,50,1,1,1,1
+3,div,2,30,4,TRUE,20,0&1&2,50,1,1,1,1
+4,exp,3,30,4,TRUE,20,1,50,1,1,1,1
+5,sqrt,3,30,4,TRUE,20,1,50,1,1,1,1
+6,log,4,15,3,TRUE,20,1,50,1,1,1,1
+7,e,5,15,3,TRUE,20,1,50,1,1,1,1
+8,naln,5,10,2,TRUE,20,1,50,1,1,1,1
+9,con,6,30,5,TRUE,20,1,50,1,1,1,1
