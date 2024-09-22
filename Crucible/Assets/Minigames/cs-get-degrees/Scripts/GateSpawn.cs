@@ -21,7 +21,7 @@ public class GateSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < playerOneBarriers.transform.GetChildCount(); i++)
+        for (int i = 0; i < playerOneBarriers.transform.childCount; i++)
         {
             GameObject Go = playerOneBarriers.transform.GetChild(i).gameObject;
             Go.transform.position -= new Vector3(0, 0, speed*1);
