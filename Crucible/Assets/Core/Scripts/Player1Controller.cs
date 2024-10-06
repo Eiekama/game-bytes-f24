@@ -18,13 +18,13 @@ public class Player1Controller : MonoBehaviour
     void Update()
     {
         // d key changes value to 1, a key changes value to - 1
-        float xMove = Input.GetAxisRaw("Horizontal");
+        float xMove = Input.GetAxisRaw("P1_Horizontal");
 
         // w key changes value to 1, s key changes value to -1
-        float zMove = Input.GetAxisRaw("Vertical");
+        float zMove = Input.GetAxisRaw("P1_Vertical");
 
         // Creates velocity in direction of value equal to keypress (WASD)
         // rb.velocity.y deals with falling + jumping by setting velocity to y. 
-        rb.velocity = new Vector3(xMove, rb.velocity.y, zMove) * speed;
+        rb.velocity = new Vector3(xMove, 0, zMove) * speed;
     }
 }
