@@ -13,26 +13,24 @@ public class Trolley_Move : MonoBehaviour
        
     }
     // Update is called once per frames
+    //Can't be delayed, need booleans like isMoving to properly implement delays
+    //ex: without isMoving, StartCoroutine(moveBack()) could be called over and over and over and over (buggy)
     void Update()
     {
-
+        //makes sure that it can only move if it isn't moving already
         if (!isMoving) {
-            StartCoroutine(moveBack());
-           // StartCoroutine(moveForward());
+            //StartCoroutine calls move
+            StartCoroutine(move());
         }
     }
 
     
-    IEnumerator moveBack()
+    IEnumerator move()
         {
             isMoving = true;
             float scale = 0.25f;
 
             if(Input.GetKeyDown(KeyCode.W)) {
-                // for (float i = 0.01f; i <= 0.25f; i += 0.01f) {
-                //     transform.position += scale * transform.forward * (2.0f*i);
-                //     yield return new WaitForSeconds(0.01f);
-                // }
                 for (float i = 0.01f; i <= 0.25f; i += 0.01f) {
                     transform.position += scale * transform.forward * (3.0f*i);
                     yield return new WaitForSeconds(0.01f);
@@ -44,10 +42,6 @@ public class Trolley_Move : MonoBehaviour
             }
 
             if(Input.GetKeyDown(KeyCode.S)) {
-                // for (float i = 0.01f; i <= 0.25f; i += 0.01f) {
-                //     transform.position += scale * transform.forward * (2.0f*i);
-                //     yield return new WaitForSeconds(0.01f);
-                // }
                 for (float i = 0.01f; i <= 0.25f; i += 0.01f) {
                     transform.position -= scale * transform.forward * (3.0f*i);
                     yield return new WaitForSeconds(0.01f);
@@ -57,32 +51,6 @@ public class Trolley_Move : MonoBehaviour
                     yield return new WaitForSeconds(0.01f);
                 }
             }
-            //move ths to new coroutine and call it outside the if 
-            //yield return new WaitForSeconds(0.25f);
-            isMoving =  false;
-        }
-    
-    IEnumerator moveForward()
-        {
-            isMoving = true;
-            float scale = 0.25f;
-
-            if(Input.GetKeyDown(KeyCode.S)) {
-                // for (float i = 0.01f; i <= 0.25f; i += 0.01f) {
-                //     transform.position += scale * transform.forward * (2.0f*i);
-                //     yield return new WaitForSeconds(0.01f);
-                // }
-                for (float i = 0.01f; i <= 0.25f; i += 0.01f) {
-                    transform.position -= scale * transform.forward * (3.0f*i);
-                    yield return new WaitForSeconds(0.01f);
-                }
-                for (float i = 0.01f; i <= 0.25f; i += 0.01f) {
-                    transform.position -= -1.0f * scale * transform.forward * (0.5f*i);
-                    yield return new WaitForSeconds(0.01f);
-                }
-            }
-            //move ths to new coroutine and call it outside the if 
-            //yield return new WaitForSeconds(0.25f);
             isMoving =  false;
         }
     
