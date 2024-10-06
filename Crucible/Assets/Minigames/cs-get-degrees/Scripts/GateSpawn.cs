@@ -16,6 +16,7 @@ public class GateSpawn : MonoBehaviour
     {
         Instantiate(fullGate, playerOneBarriers.transform);
         StartCoroutine(makeGate());
+        
     }
 
     // Update is called once per frame
