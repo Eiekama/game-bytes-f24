@@ -116,7 +116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3474a806b25c5c448636ed2ed1f1362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   speed: 4
 --- !u!114 &1326386654
 MonoBehaviour:
@@ -130,3 +129,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7831c820ce74a448963511c40c94185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  follower: {fileID: 0}
