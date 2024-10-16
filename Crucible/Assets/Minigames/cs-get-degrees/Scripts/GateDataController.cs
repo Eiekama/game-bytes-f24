@@ -105,6 +105,12 @@ public static class GateDataController
         return new changeData(people,tot);
     }
 
+
+    public static void setUpGate(GameObject gate, gateObject gateO)
+    {
+
+    }
+
     //DO NOT TOUCH BELOW THIS LINE
     //============================================================================
     //============================================================================
