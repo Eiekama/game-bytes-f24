@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System;
+using TMPro;
 
 public static class GateDataController
 {
@@ -16,6 +17,8 @@ public static class GateDataController
     //Returns a changeData class which you can access the new data to set people and gpa to
 
 
+    //GateDataController.setGateData(<gate>,<gateObject>)
+    //Sets up a new gate so that it has the right data and that it shows the right text
 
     //Get the data for a new gate
     //Enter a level 0<=level<=max
@@ -105,10 +108,17 @@ public static class GateDataController
         return new changeData(people,tot);
     }
 
-
+    //Sets the gate data for the collision
+    //Makes the text of the canvas on the gate show
     public static void setUpGate(GameObject gate, gateObject gateO)
     {
-
+        for (int i=0; i<gateO.gateCount;i++)
+        {
+            GameObject collide = gate.GetComponentsInChildren<Transform>()[i].gameObject;
+            collide.GetComponent<BarrierStructure>().gateData = gateO.gates.ToArray()[0];
+            TextMeshProUGUI gateText = collide.GetComponentsInChildren<Transform>()[1].GetComponentsInChildren<Transform>()[1].GetComponentsInChildren<Transform>()[0].GetComponent<TextMeshProUGUI>();
+            gateText.text = gateO.gates.ToArray()[0].gateText;
+        }
     }
 
     //DO NOT TOUCH BELOW THIS LINE
