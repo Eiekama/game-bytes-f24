@@ -8,37 +8,45 @@ public class GateSpawn : MonoBehaviour
     [SerializeField] GameObject fullGate;
 
     [SerializeField] GameObject playerOneBarriers;
+    [SerializeField] GameObject playerTwoBarriers;
     [SerializeField] float speed;
-    [SerializeField] List<Transform> startLocs;
+    [SerializeField] List<GameObject> players;
+    private List<Transform> startLocs;
     Dictionary<GameObject, gateObject> gates;
 
     // Start is called before the first frame update
     void Start()
     {
         gates = new Dictionary<GameObject, gateObject>();
-        startLocs = new List<Transform>();
 
-        Instantiate(fullGate, playerOneBarriers.transform);
+        //Instantiate(fullGate, playerOneBarriers.transform);
         StartCoroutine(makeGate());
         
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         for (int i = 0; i < playerOneBarriers.transform.childCount; i++)
         {
-            GameObject Go = playerOneBarriers.transform.GetChild(i).gameObject;
-            Go.transform.position -= new Vector3(0, 0, speed*1);
+            GameObject Go1 = playerOneBarriers.transform.GetChild(i).gameObject;
+            GameObject Go2 = playerTwoBarriers.transform.GetChild(i).gameObject;
+
+            Go1.transform.position -= new Vector3(0, 0, speed*1);
+            Go2.transform.position -= new Vector3(0, 0, speed * 1);
+
         }
     }
 
     IEnumerator makeGate()
     {
-        //Debug.Log(startLocs.ElementAt(0).transform.position);
-        GameObject gate = Instantiate(fullGate, playerOneBarriers.transform);
+        Debug.Log(players.ElementAt(0).transform);
+        //Transform gate0 = playerOneBarriers.transform;
+
+        GameObject gate1 = Instantiate(fullGate, playerOneBarriers.transform);
+        GameObject gate2 = Instantiate(fullGate, playerTwoBarriers.transform);
         gateObject gate_object = GateDataController.getGateData(1);
-        gates.Add(gate, gate_object);
+        //gates.Add(gate1, gate_object);
         //foreach (Transform t in  startLocs)
         //{
         //    GameObject gate = Instantiate(fullGate, t);
