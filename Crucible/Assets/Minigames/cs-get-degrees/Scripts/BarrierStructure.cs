@@ -5,7 +5,7 @@ using UnityEngine;
 public class BarrierStructure : MonoBehaviour
 {
 
-    public gateData gateData;
+    private gateData gateData;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +16,15 @@ public class BarrierStructure : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public gateData getGateData()
+    {
+        return gateData;
+    }
+
+    public void setGateData(gateData data)
+    {
+        gateData = data;
     }
 }
