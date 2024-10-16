@@ -729,7 +729,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928684665}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3, y: 0, z: 11.8}
+  m_LocalPosition: {x: -1.3, y: 0, z: 10.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1101562306}
@@ -1276,7 +1276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908559c95491c48ab99f6d841e34dd9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullGate: {fileID: 3412081593081254200, guid: 38ab9225f29f04cb8950785b001109db,
+  fullGate: {fileID: 6414697696983321975, guid: a5049374fb17e45ceb2143be06c0448c,
     type: 3}
   playerOneBarriers: {fileID: 928684665}
   playerTwoBarriers: {fileID: 1249560368}
@@ -2980,6 +2980,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1326386654, guid: 378d02e7adbf64d429ea0eb7155e0bac, type: 3}
+      propertyPath: follower
+      value: 
+      objectReference: {fileID: 3639958499402816944}
     - target: {fileID: 1326386654, guid: 378d02e7adbf64d429ea0eb7155e0bac, type: 3}
       propertyPath: m_Enabled
       value: 0

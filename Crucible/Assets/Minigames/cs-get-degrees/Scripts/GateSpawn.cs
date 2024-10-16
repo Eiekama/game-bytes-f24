@@ -40,23 +40,18 @@ public class GateSpawn : MonoBehaviour
 
     IEnumerator makeGate()
     {
-        Debug.Log(players.ElementAt(0).transform);
-        //Transform gate0 = playerOneBarriers.transform;
-
         GameObject gate1 = Instantiate(fullGate, playerOneBarriers.transform);
         GameObject gate2 = Instantiate(fullGate, playerTwoBarriers.transform);
         gateObject gate_object = GateDataController.getGateData(1);
-        //gates.Add(gate1, gate_object);
-        //foreach (Transform t in  startLocs)
-        //{
-        //    GameObject gate = Instantiate(fullGate, t);
-        //    gateObject gate_object = GateDataController.getGateData(1);
-        //    gates.Add(gate, gate_object);
+        gate_object.gateCount = 1;
 
-        //    //Instantiate(fullGate, playerOneBarriers.transform);
-        //}
+        GateDataController.setUpGate(gate1, gate_object);
+        GateDataController.setUpGate(gate2, gate_object);
 
-        //Instantiate(fullGate, startLocs.ElementAt(0));
+        gates.Add(gate1, gate_object);
+        gates.Add(gate2, gate_object);
+
+
         yield return new WaitForSeconds(2);
         StartCoroutine(makeGate());
     }
