@@ -116,8 +116,8 @@ public static class GateDataController
         {
             GameObject collide = gate.GetComponentsInChildren<Transform>()[i].gameObject;
             collide.GetComponent<BarrierStructure>().gateData = gateO.gates.ToArray()[0];
-            TextMeshProUGUI gateText = collide.GetComponentsInChildren<Transform>()[1].GetComponentsInChildren<Transform>()[1].GetComponentsInChildren<Transform>()[0].GetComponent<TextMeshProUGUI>();
-            gateText.text = gateO.gates.ToArray()[0].gateText;
+            TextMeshProUGUI gateText = collide.GetComponentsInChildren<Transform>()[1].GetComponentsInChildren<Transform>()[1].GetComponentsInChildren<TextMeshProUGUI>()[0];
+            gateText.text = gateO.gates.ToArray()[i].gateText;
         }
     }
 
