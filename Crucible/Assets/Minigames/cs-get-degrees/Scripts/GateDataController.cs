@@ -62,7 +62,7 @@ public static class GateDataController
             finalList = workingList.ToArray();
 
             int[] gateData = new int[] {1,1,1,2,2,3};
-            int gateCount = UnityEngine.Random.Range(0, 6);
+            int gateCount = UnityEngine.Random.Range(1, 4);
             List<gateData> gates = new List<gateData>();
             for (int i=0; i<gateCount;i++)
             {
@@ -84,11 +84,31 @@ public static class GateDataController
 
     //Give the current number of people or gpa with the calculation
     //Returns the number to set the gpa and people to
-    public static changeData doCalculation(int people, int gpa, calcualation calculation)
+    public static changeData doCalculation(int people, int gpa, calcualation calc)
     {
-        return new changeData(0,0);
+        int tot = 0;
+        string op = calc.calc;
+        if (String.Equals(op, "plus"))
+        {
+            tot += calc.amount;
+        } else if (String.Equals(op, "minus"))
+        {
+            tot -= calc.amount;
+        }
+        if (calc.people)
+        {
+            people += tot;
+        } else
+        {
+            gpa += tot;
+        }
+        return new changeData(people,tot);
     }
 
+    //DO NOT TOUCH BELOW THIS LINE
+    //============================================================================
+    //============================================================================
+    //============================================================================
     //============================================================================
     //DO NOT TOUCH BELOW THIS LINE
 
@@ -121,11 +141,29 @@ public static class GateDataController
         }
         int finalSelection = UnityEngine.Random.Range(0, totalPartition);
         calcualation finalCalc = calcList.ToArray()[finalSelection];
-        gateData returnGate = new gateData(finalCalc.people, finalCalc);
+        gateData returnGate = new gateData(finalCalc.people, finalCalc, convertCalculationToText(finalCalc));
         return returnGate;
     }
 
-    
+    public static string convertCalculationToText(calcualation calc)
+    {
+        string op = calc.calc;
+        string item = calc.people ? "friend" : "gpa";
+        int am = calc.amount;
+        if (String.Equals(item, "friend") && am > 1)
+        {
+            item = "friends";
+        }
+        if (op == "plus")
+        {
+            return "+ " + am.ToString() + " " + item;
+        }
+        if (op == "sub")
+        {
+            return "- " + am.ToString() + " " + item;
+        }
+        return "ERROR";
+    }
 }
 
 
@@ -134,10 +172,12 @@ public class gateData
 {
     public bool people;
     public calcualation calculation;
-    public gateData(bool p, calcualation c)
+    public string gateText;
+    public gateData(bool p, calcualation c, string gateText)
     {
         this.people = p;
         this.calculation = c;
+        this.gateText = gateText;
     }
 }
 
