@@ -43,6 +43,8 @@ public class GateSpawn : MonoBehaviour
     IEnumerator makeGate()
     {
         gateObject gate_object = GateDataController.getGateData(1);
+
+        gate_object.gateCount = 1;
         //try
         //{
         GameObject gate1 = Instantiate(getGatePrefab(gate_object), playerOneBarriers.transform);
