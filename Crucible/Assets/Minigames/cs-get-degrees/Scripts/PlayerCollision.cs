@@ -13,10 +13,8 @@ public class PlayerCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "barrier" && !players.Contains(other.gameObject))
         {
-            //AddPlayer();
             AddPlayer();
             doGateEffect(other.gameObject);
-            print("bazinga");
         }
     }
     private void Start()
