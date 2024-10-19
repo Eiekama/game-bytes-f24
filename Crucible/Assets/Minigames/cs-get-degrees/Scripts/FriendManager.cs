@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FriendManager
+public class FriendManager : MonoBehaviour
 {
     public List<Friend> _friends;
     [SerializeField] List<GameObject> players;
@@ -22,6 +22,7 @@ public class FriendManager
     {
         return friendPrehab;
     }
+    //public static void SpawnFriend(Player player)
 
     //public List<Friend> getFriends()
     //{
@@ -29,18 +30,13 @@ public class FriendManager
     //}
 }
 
-public class Friend : FriendManager
+public class Friend
 {
-    private int _friendCount;
-    private GameObject _player;
-    
-    public Friend(GameObject player)
+    public GameObject _player;
+    GameObject friendObject;
+
+    public Friend(GameObject friendObject, GameObject player)
     {
         _player = player;
-        _friends.Add(this);
-    }
-    public void SpawnFriend()
-    {
-        Instantiate(getFriendPrehab(), _player.transform);
     }
 }
