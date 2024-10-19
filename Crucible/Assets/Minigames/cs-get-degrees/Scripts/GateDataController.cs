@@ -94,7 +94,7 @@ public static class GateDataController
         if (String.Equals(op, "plus"))
         {
             tot += calc.amount;
-        } else if (String.Equals(op, "minus"))
+        } else if (String.Equals(op, "sub"))
         {
             tot -= calc.amount;
         }
@@ -105,7 +105,19 @@ public static class GateDataController
         {
             gpa += tot;
         }
-        return new changeData(people,tot);
+        if (people < 0)
+        {
+            people = 0;
+        }
+        if (gpa < 0)
+        {
+            gpa = 0;
+        }
+        if (gpa > 400)
+        {
+            gpa = 400;
+        }
+        return new changeData(people,gpa);
     }
 
     //Sets the gate data for the collision
