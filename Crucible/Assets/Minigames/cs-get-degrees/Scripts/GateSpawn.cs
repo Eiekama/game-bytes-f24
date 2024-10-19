@@ -43,22 +43,22 @@ public class GateSpawn : MonoBehaviour
     IEnumerator makeGate()
     {
         gateObject gate_object = GateDataController.getGateData(1);
-        try
-        {
-            GameObject gate1 = Instantiate(getGatePrefab(gate_object), playerOneBarriers.transform);
-            GameObject gate2 = Instantiate(getGatePrefab(gate_object), playerTwoBarriers.transform);
+        //try
+        //{
+        GameObject gate1 = Instantiate(getGatePrefab(gate_object), playerOneBarriers.transform);
+        GameObject gate2 = Instantiate(getGatePrefab(gate_object), playerTwoBarriers.transform);
 
-            GateDataController.setUpGate(gate1, gate_object);
-            GateDataController.setUpGate(gate2, gate_object);
+        GateDataController.setUpGate(gate1, gate_object);
+        GateDataController.setUpGate(gate2, gate_object);
 
         gates.Add(gate1, gate_object);
         gates.Add(gate2, gate_object);
-        }
-        catch (IndexOutOfRangeException e)
-        {
-            Debug.Log(gate_object.gateCount);
-            e.ToString();
-        }
+        //}
+        //catch (IndexOutOfRangeException e)
+        //{
+        Debug.Log(gate_object.gateCount);
+        //    e.ToString();
+        //}
 
         yield return new WaitForSeconds(2);
         StartCoroutine(makeGate());
