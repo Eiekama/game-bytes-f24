@@ -2134,14 +2134,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908559c95491c48ab99f6d841e34dd9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullGate: {fileID: 6414697696983321975, guid: a5049374fb17e45ceb2143be06c0448c,
-    type: 3}
   playerOneBarriers: {fileID: 928684665}
   playerTwoBarriers: {fileID: 1249560368}
   speed: 0.05
   players:
   - {fileID: 1798065900}
   - {fileID: 1888818210}
+  gatePrefabs:
+  - {fileID: 6414697696983321975, guid: a5049374fb17e45ceb2143be06c0448c, type: 3}
+  - {fileID: 1104968980156190900, guid: edad63975c3974a5fb6624be7d549d86, type: 3}
+  - {fileID: 4822199710307813641, guid: d2fc3e1d2574146698a95147c8b69e57, type: 3}
 --- !u!1 &1798065900 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8718118357123377945, guid: 378d02e7adbf64d429ea0eb7155e0bac,
