@@ -44,6 +44,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BarrierHalf (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5408865685080089452, guid: 56e9af73243cf4835869f78101be4457,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7071759478601764048, guid: 56e9af73243cf4835869f78101be4457,
         type: 3}
       propertyPath: m_RootOrder
@@ -118,6 +123,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BarrierHalf
+      objectReference: {fileID: 0}
+    - target: {fileID: 5408865685080089452, guid: 56e9af73243cf4835869f78101be4457,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7071759478601764048, guid: 56e9af73243cf4835869f78101be4457,
         type: 3}

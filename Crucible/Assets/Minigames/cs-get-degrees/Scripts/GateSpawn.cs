@@ -47,6 +47,7 @@ public class GateSpawn : MonoBehaviour
         gate_object.gateCount = 1;
         //try
         //{
+        Debug.Log("SPAWING: " + gate_object.gateCount);
         GameObject gate1 = Instantiate(getGatePrefab(gate_object), playerOneBarriers.transform);
         GameObject gate2 = Instantiate(getGatePrefab(gate_object), playerTwoBarriers.transform);
 
@@ -58,7 +59,6 @@ public class GateSpawn : MonoBehaviour
         //}
         //catch (IndexOutOfRangeException e)
         //{
-        Debug.Log(gate_object.gateCount);
         //    e.ToString();
         //}
 

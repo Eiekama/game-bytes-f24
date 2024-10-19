@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7071759478601764048}
   - component: {fileID: 8827257508197073525}
+  - component: {fileID: 1022239191880173713}
   m_Layer: 0
   m_Name: BarrierHalf
-  m_TagString: Untagged
+  m_TagString: barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,6 +46,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c822c212aa3c645bb4511efa36edd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1022239191880173713
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3576136638355686155}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6547098, y: 1, z: 0.17095749}
+  m_Center: {x: 1.0220106, y: 0, z: -0.09616289}
 --- !u!1001 &8149361286111640662
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -112,7 +126,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4181731099468013370, guid: 950b35e413b39418baf2e9b0a8f38ec1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 950b35e413b39418baf2e9b0a8f38ec1, type: 3}
 --- !u!4 &2887620567068002710 stripped
 Transform:
