@@ -127,7 +127,7 @@ public static class GateDataController
         for (int i=0; i<gateO.gateCount;i++)
         {
             BarrierStructure bs = gate.GetComponentsInChildren<BarrierStructure>()[i];
-            bs.setGateData(gateO.gates.ToArray()[0]);
+            bs.setGateData(gateO.gates.ToArray()[i]);
             /*GameObject gates = collide.GetComponentsInChildren<Transform>()[4].gameObject;
             Debug.Log(gates.name);
             GameObject canvas = gates.GetComponentInChildren<Canvas>().gameObject;
