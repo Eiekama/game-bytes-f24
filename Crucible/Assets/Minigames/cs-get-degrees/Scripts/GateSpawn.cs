@@ -44,7 +44,7 @@ public class GateSpawn : MonoBehaviour
     {
         gateObject gate_object = GateDataController.getGateData(1);
 
-        gate_object.gateCount = 1;
+        //gate_object.gateCount = 1;
         //try
         //{
         Debug.Log("SPAWING: " + gate_object.gateCount);
