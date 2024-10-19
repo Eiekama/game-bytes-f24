@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class GateSpawn : MonoBehaviour
 {
-    [SerializeField] GameObject fullGate;
+    //[SerializeField] GameObject fullGate;
 
     [SerializeField] GameObject playerOneBarriers;
     [SerializeField] GameObject playerTwoBarriers;
@@ -13,13 +15,13 @@ public class GateSpawn : MonoBehaviour
     [SerializeField] List<GameObject> players;
     private List<Transform> startLocs;
     Dictionary<GameObject, gateObject> gates;
+    [SerializeField] List<GameObject> gatePrefabs;
 
     // Start is called before the first frame update
     void Start()
     {
         gates = new Dictionary<GameObject, gateObject>();
 
-        //Instantiate(fullGate, playerOneBarriers.transform);
         StartCoroutine(makeGate());
         
     }
@@ -40,19 +42,30 @@ public class GateSpawn : MonoBehaviour
 
     IEnumerator makeGate()
     {
-        GameObject gate1 = Instantiate(fullGate, playerOneBarriers.transform);
-        GameObject gate2 = Instantiate(fullGate, playerTwoBarriers.transform);
         gateObject gate_object = GateDataController.getGateData(1);
-        gate_object.gateCount = 1;
+        try
+        {
+            GameObject gate1 = Instantiate(getGatePrefab(gate_object), playerOneBarriers.transform);
+            GameObject gate2 = Instantiate(getGatePrefab(gate_object), playerTwoBarriers.transform);
 
-        GateDataController.setUpGate(gate1, gate_object);
-        GateDataController.setUpGate(gate2, gate_object);
+            GateDataController.setUpGate(gate1, gate_object);
+            GateDataController.setUpGate(gate2, gate_object);
 
         gates.Add(gate1, gate_object);
         gates.Add(gate2, gate_object);
-
+        }
+        catch (IndexOutOfRangeException e)
+        {
+            Debug.Log(gate_object.gateCount);
+            e.ToString();
+        }
 
         yield return new WaitForSeconds(2);
         StartCoroutine(makeGate());
+    }
+
+    GameObject getGatePrefab(gateObject gate)
+    {
+        return gatePrefabs.ElementAt(gate.gateCount - 1);
     }
 }
