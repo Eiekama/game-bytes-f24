@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (horizontal < 0)
         {
+            Friend friend = new Friend(gameObject);
+            friend.SpawnFriend();
             transform.position += -transform.right * speed * Time.deltaTime;
         }
     }
