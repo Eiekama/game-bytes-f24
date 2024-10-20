@@ -40,6 +40,11 @@ public class Trolley_Move : MonoBehaviour
         while(Input.GetKey(KeyCode.D) && transform.position.x < 4.79) {
             transform.position += exp * forward_speed * transform.right; 
             exp += 0.1f;
+            if (Victim.stun == 1) {
+                Victim.stun = 0;
+                yield return new WaitForSeconds(0.3f);
+                break;
+            }
             yield return new WaitForSeconds(0.01f);
         }
         exp = 1.1f;

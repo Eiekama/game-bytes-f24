@@ -5,10 +5,17 @@ using UnityEngine;
 public class Victim : MonoBehaviour
 {
     public int victim_track = 1;
+    public GameObject trolley;
+    public Rigidbody trolley_rb;
+    static public int stun;
 
     // Start is called before the first frame update
     void Start()
     {
+        stun = 0;
+        trolley = GameObject.FindGameObjectWithTag("real_trolley");
+        trolley_rb = trolley.GetComponent<Rigidbody>();
+
         if (-3.74 <= transform.position.z && transform.position.z <= -2.19) {
             victim_track = 1;
         }
@@ -26,6 +33,10 @@ public class Victim : MonoBehaviour
     void Update()
     {
         StartCoroutine(slide());
+        if (transform.position.x < -7.0f) {
+            MinigameController.Instance.AddScore(1,1);
+            Destroy(gameObject);
+        }
     }
     //for speeding up to the right
     IEnumerator slide() {
@@ -36,6 +47,10 @@ public class Victim : MonoBehaviour
     private void OnTriggerEnter(Collider target)
     {
         if(target.gameObject.tag.Equals("trolley") == true) {
+            MinigameController.Instance.AddScore(2,1);
+            trolley_rb.AddForce( transform.right * -200.0f, ForceMode.Impulse);
+            trolley_rb.AddForce( transform.up * 200.0f, ForceMode.Impulse);
+            stun = 1;
             Destroy(gameObject);
         }
     }
