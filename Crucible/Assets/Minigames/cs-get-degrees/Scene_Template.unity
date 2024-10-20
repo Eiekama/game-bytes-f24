@@ -1334,6 +1334,10 @@ PrefabInstance:
       propertyPath: follower
       value: 
       objectReference: {fileID: 3639958499402816944}
+    - target: {fileID: 1326386654, guid: 378d02e7adbf64d429ea0eb7155e0bac, type: 3}
+      propertyPath: _friendManager
+      value: 
+      objectReference: {fileID: 1924920211}
     - target: {fileID: 8338180342579392931, guid: 378d02e7adbf64d429ea0eb7155e0bac,
         type: 3}
       propertyPath: m_RootOrder
@@ -2264,6 +2268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1924920210}
+  - component: {fileID: 1924920211}
   m_Layer: 0
   m_Name: Friends
   m_TagString: Untagged
@@ -2286,6 +2291,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1924920211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924920209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c32d4272671728a419854854bc4e9219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players:
+  - {fileID: 1798065900}
+  - {fileID: 1888818210}
+  friendPrehab: {fileID: 3639958499402816944}
 --- !u!1 &1925410244
 GameObject:
   m_ObjectHideFlags: 0
@@ -4159,6 +4180,10 @@ PrefabInstance:
       propertyPath: playerNum
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1326386654, guid: 378d02e7adbf64d429ea0eb7155e0bac, type: 3}
+      propertyPath: _friendManager
+      value: 
+      objectReference: {fileID: 1924920211}
     - target: {fileID: 2690625953501752281, guid: 378d02e7adbf64d429ea0eb7155e0bac,
         type: 3}
       propertyPath: m_Controller

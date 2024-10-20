@@ -79,14 +79,12 @@ public class FriendManager : MonoBehaviour
     // Removes a given amount of Friend objects from a player's friends list
     public void removeFriends(int count, List<Friend> playerFriends)
     {
-        if (count >= playerFriends.Count) { playerFriends.Clear(); }
-        else
+        if (count >= playerFriends.Count) { count = playerFriends.Count; }
+
+        for (int i = 0; i < count; i++)
         {
-            for (int i = 0; i < count; i++)
-            {
-                Friend friend = playerFriends.ElementAt(0);
-                removeFriend(friend , playerFriends);
-            }
+            Friend friend = playerFriends.ElementAt(0);
+            removeFriend(friend , playerFriends);
         }
     }
 
