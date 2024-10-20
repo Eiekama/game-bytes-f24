@@ -18,7 +18,7 @@ public class ItemPickUp : MonoBehaviour
         myCollider.radius = PickUpRadius;
     }
 
-    private void onTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // Unity function
     {
         var inventory = other.transform.GetComponent<InventoryHolder>();
         if (!inventory) return;
