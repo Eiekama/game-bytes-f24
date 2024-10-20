@@ -2303,6 +2303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c32d4272671728a419854854bc4e9219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rowSpacing: 1
   players:
   - {fileID: 1798065900}
   - {fileID: 1888818210}

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +9,18 @@ public class FriendManager : MonoBehaviour
     private List<Friend> _friends;
     private List<Friend> player1Friends;
     private List<Friend> player2Friends;
+    private float _trackSize;
+    private int maxFriendsPerRow;
+    [SerializeField] float rowSpacing;
     [SerializeField] List<GameObject> players;
     [SerializeField] GameObject friendPrehab;
 
     // Start is called before the first frame update
     void Start()
     {
+        maxFriendsPerRow = 5;
+        _trackSize = 3F;
+
         _friends = new List<Friend>();
         player1Friends = new List<Friend>();
         player2Friends = new List<Friend>();
@@ -35,13 +42,41 @@ public class FriendManager : MonoBehaviour
         if(playerFriends.Count == 0) { return; }
         Vector3 playerLoc = playerFriends.ElementAt(0).playerObject.transform.position;
         int friendCount = playerFriends.Count;
+        int rows = (int)System.Math.Ceiling((float)(friendCount / (double)maxFriendsPerRow));
+        int cols = maxFriendsPerRow;
+        int i = 0;
 
-        for(int i = 0; i < friendCount; i++)
+
+        for (int row = 0; row < rows; row++)
         {
-            Vector3 newLoc = playerLoc;
-            newLoc.x += (i - friendCount / 2);
-            playerFriends.ElementAt(i).friendObject.transform.position = newLoc;
+            cols = maxFriendsPerRow;
+            if (cols > friendCount)
+            {
+                cols = friendCount % maxFriendsPerRow;
+            }
+            for (int col = 0; col < cols; col++)
+            {
+                Debug.Log("rows: " + rows + ", cols: " + cols);
+
+                Vector3 newLoc = playerLoc;
+                float spacing = (_trackSize) / cols;
+
+                //Debug.Log("(" + col + " - " + cols + " / " + 2 + ") * " + spacing);
+                newLoc.x += (col - cols / 2) * spacing;
+                newLoc.z -= rowSpacing * (float)(row + 1);
+                playerFriends.ElementAt(i).friendObject.transform.position = newLoc;
+                i++;
+            }
+
         }
+        //for (int i = 0; i < friendCount; i++)
+        //{
+        //    Vector3 newLoc = playerLoc;
+        //    float spacing = (_trackSize) / friendCount;
+
+        //    newLoc.x += (i - friendCount / 2) * spacing;
+        //    playerFriends.ElementAt(i).friendObject.transform.position = newLoc;
+        //}
     }
 
     // Returns _friends
@@ -63,8 +98,6 @@ public class FriendManager : MonoBehaviour
             return; 
         }
 
-        Debug.Log("list count: , " + playerFriends.Count + ", count: " + count);
-
         if (count > playerFriends.Count)
         {
             spawnFriends(count - playerFriends.Count, player);
@@ -83,7 +116,7 @@ public class FriendManager : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
-            Friend friend = playerFriends.ElementAt(0);
+            Friend friend = playerFriends.ElementAt(playerFriends.Count - 1);
             removeFriend(friend , playerFriends);
         }
     }
@@ -100,7 +133,6 @@ public class FriendManager : MonoBehaviour
     // Spawms a certain amount friends for specified player
     public void spawnFriends(int count, GameObject player)
     {
-        Debug.Log("got HERE");
         for (int i = 0; i < count;i++)
         {
             SpawnFriend(player);
