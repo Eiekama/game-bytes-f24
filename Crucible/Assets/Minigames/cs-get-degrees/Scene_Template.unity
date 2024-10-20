@@ -885,13 +885,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Settings: {fileID: 11400000, guid: 54aae246c8e29834bbd5810fe72c6980, type: 2}
-  DurationSeconds: 60
+  DurationSeconds: 30
   WinOnTimeEnd: 0
   TimerPaused: 0
   TimerText: {fileID: 1289851229}
   Score1Text: {fileID: 271921620}
   Score2Text: {fileID: 508174078}
-  DEBUG_GamemodeToTest: 2
+  DEBUG_GamemodeToTest: 4
   CurrentGamemode: 0
   MinigameEnded: 0
 --- !u!1 &751401306
@@ -2253,6 +2253,7 @@ MonoBehaviour:
   playerOneG: {fileID: 1925410246}
   playerTwoF: {fileID: 347368593}
   playerTwoG: {fileID: 955994562}
+  miniC: {fileID: 635126287}
 --- !u!1 &1888818210 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8718118357123377945, guid: 378d02e7adbf64d429ea0eb7155e0bac,
