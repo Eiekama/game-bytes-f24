@@ -177,6 +177,17 @@ public static class GateDataController
         return returnGate;
     }
 
+    private static string strConvert(int d, bool gpa)
+    {
+        if (!gpa)
+        {
+            return d.ToString();
+        } else
+        {
+            return (d/100.0).ToString("0.00");
+        }
+    }
+
     public static string convertCalculationToText(calcualation calc)
     {
         string op = calc.calc;
@@ -188,11 +199,11 @@ public static class GateDataController
         }
         if (op == "plus")
         {
-            return "+ " + am.ToString() + " " + item;
+            return "+ " + strConvert(am, item=="gpa") + " " + item;
         }
         if (op == "sub")
         {
-            return "- " + am.ToString() + " " + item;
+            return "- " + strConvert(am, item == "gpa") + " " + item;
         }
         return "ERROR";
     }
