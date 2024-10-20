@@ -4,28 +4,26 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-    List<GameObject> players = new List<GameObject>();
+    private List<GameObject> _friendObjects = new List<GameObject>();
+    [SerializeField] private FriendManager _friendManager;
     [SerializeField] private MainController mc;
     [SerializeField] private int playerNum;
-
-    [SerializeField] GameObject follower;
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "barrier" && !players.Contains(other.gameObject))
+        if (other.gameObject.tag == "barrier" && !_friendObjects.Contains(other.gameObject))
         {
-            Debug.Log("HIT");
-            AddPlayer();
+            //AddPlayer(gameObject);
             doGateEffect(other.gameObject);
         }
     }
     private void Start()
     {
-        Debug.Log("stareted");
+
     }
 
-    private void AddPlayer()
+    private void AddPlayer(GameObject player)
     {
-        players.Add(Instantiate(follower, transform.position, transform.rotation));
+        _friendObjects.Add(_friendManager.SpawnFriend(player));
     }
 
     private void doGateEffect(GameObject barrier)
@@ -35,5 +33,11 @@ public class PlayerCollision : MonoBehaviour
         changeData cd = GateDataController.doCalculation(mc.getFriends(playerNum), mc.getGPA(playerNum), calc);
         mc.setFriends(playerNum, cd.newPeople);
         mc.setGPA(playerNum, cd.newGpa);
+
+        //Debug.Log(_friendManager.getFriends().Count + " " + cd.newPeople);
+        //if (_friendManager.getPlayerFriends(gameObject).Count != cd.newPeople) 
+        //{
+            _friendManager.setFriends(cd.newPeople, gameObject); 
+        //}
     }
 }
