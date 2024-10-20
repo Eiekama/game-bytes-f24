@@ -34,8 +34,27 @@ public class GateSpawn : MonoBehaviour
             GameObject Go1 = playerOneBarriers.transform.GetChild(i).gameObject;
             GameObject Go2 = playerTwoBarriers.transform.GetChild(i).gameObject;
 
-            Go1.transform.position -= new Vector3(0, 0, speed*1);
-            Go2.transform.position -= new Vector3(0, 0, speed * 1);
+            int superSpeedOne = 1;
+            if (Go1.transform.localPosition.z > 0)
+            {
+                superSpeedOne = 10;
+            } else
+            {
+                superSpeedOne = 1;
+            }
+
+            int superSpeedTwo = 1;
+            if (Go2.transform.localPosition.z > 0)
+            {
+                superSpeedTwo = 10;
+            }
+            else
+            {
+                superSpeedTwo = 1;
+            }
+
+            Go1.transform.position -= new Vector3(0, 0, superSpeedOne * speed*1);
+            Go2.transform.position -= new Vector3(0, 0, superSpeedTwo * speed * 1);
 
         }
     }
@@ -47,9 +66,11 @@ public class GateSpawn : MonoBehaviour
         //gate_object.gateCount = 1;
         //try
         //{
-        Debug.Log("SPAWING: " + gate_object.gateCount);
+        //Debug.Log("SPAWING: " + gate_object.gateCount);
         GameObject gate1 = Instantiate(getGatePrefab(gate_object), playerOneBarriers.transform);
+        gate1.transform.position -= new Vector3(0, 0, -25);
         GameObject gate2 = Instantiate(getGatePrefab(gate_object), playerTwoBarriers.transform);
+        gate2.transform.position -= new Vector3(0, 0, -25);
 
         GateDataController.setUpGate(gate1, gate_object);
         GateDataController.setUpGate(gate2, gate_object);
@@ -62,7 +83,7 @@ public class GateSpawn : MonoBehaviour
         //    e.ToString();
         //}
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
         StartCoroutine(makeGate());
     }
 

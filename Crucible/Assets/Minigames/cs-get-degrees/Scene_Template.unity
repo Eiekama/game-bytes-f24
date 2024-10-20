@@ -1327,7 +1327,15 @@ PrefabInstance:
     m_TransformParent: {fileID: 1055006035}
     m_Modifications:
     - target: {fileID: 1326386652, guid: 378d02e7adbf64d429ea0eb7155e0bac, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326386652, guid: 378d02e7adbf64d429ea0eb7155e0bac, type: 3}
       propertyPath: playerNum
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326386653, guid: 378d02e7adbf64d429ea0eb7155e0bac, type: 3}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1326386654, guid: 378d02e7adbf64d429ea0eb7155e0bac, type: 3}
@@ -2144,7 +2152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerOneBarriers: {fileID: 928684665}
   playerTwoBarriers: {fileID: 1249560368}
-  speed: 0.05
+  speed: 0.15
   players:
   - {fileID: 1798065900}
   - {fileID: 1888818210}
@@ -2172,7 +2180,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &1878239622
 GameObject:
@@ -2278,7 +2286,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &1924920209
 GameObject:
@@ -4182,12 +4190,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 1988874451}
     m_Modifications:
     - target: {fileID: 1326386652, guid: 378d02e7adbf64d429ea0eb7155e0bac, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326386652, guid: 378d02e7adbf64d429ea0eb7155e0bac, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1326386652, guid: 378d02e7adbf64d429ea0eb7155e0bac, type: 3}
       propertyPath: playerNum
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326386653, guid: 378d02e7adbf64d429ea0eb7155e0bac, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1326386654, guid: 378d02e7adbf64d429ea0eb7155e0bac, type: 3}
       propertyPath: mc
