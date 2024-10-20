@@ -11,6 +11,7 @@ public class Trolley_Move : MonoBehaviour
     private float exp = 1.1f; //some exponential speed to make it feel better
     public float forward_speed; //base speed 
     public bool isSpeeding = false; //makes sure that the trolley can only speed up when its not already speeding (avoid super fast trolley bug)
+    static public float leftscroll = 0.005f;
 
     static public int track = 1; //collision purposes (trolley has no volume, just needs to be in same track to hit a guy)
     void Start()
@@ -43,11 +44,8 @@ public class Trolley_Move : MonoBehaviour
         }
         exp = 1.1f;
         isSpeeding = false;
-        while(transform.position.x > -4.79) {
-            transform.position -= 0.00005f * transform.right; 
-            if (Input.GetKey(KeyCode.D)) {
-                break;
-            }
+        if(transform.position.x > -4.79) {
+            transform.position -= leftscroll * transform.right; 
             yield return new WaitForSeconds(0.01f);
         }
     }

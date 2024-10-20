@@ -8,8 +8,8 @@ public class Villain_Move : MonoBehaviour
 
     private float exp = 1.1f; //some exponential speed to make it feel better
     public float forward_speed; //base speed 
-    public bool isMoving = false; //makes sure that the villain can only move up when its not already moving (avoid super fast villain bug)
-    public bool isSwitching = false;
+    static public bool v_isMoving = false; //makes sure that the villain can only move up when its not already moving (avoid super fast villain bug)
+    static public bool v_isSwitching = false;
 
     static public int vtrack = 1; //collision purposes (villain has no volume, just needs to be in same track to hit the trolley)
     void Start()
@@ -17,17 +17,17 @@ public class Villain_Move : MonoBehaviour
         forward_speed = 0.005f; //manually set speed (testing says this works nice, subject to change)
     }
     // Update is called once per frames
-    //Can't be delayed, need booleans like isMoving to properly implement delays
-    //ex: without isMoving, StartCoroutine(moveBack()) could be called over and over and over and over (buggy)
+    //Can't be delayed, need booleans like v_isMoving to properly implement delays
+    //ex: without v_isMoving, StartCoroutine(moveBack()) could be called over and over and over and over (buggy)
     void Update()
     {
         //makes sure that it can only move if it isn't moving already (avoid super fast villain bug)
         //can't move left/right and switch tracks at the same time
-        if (!isMoving && !isSwitching) {
+        if (!v_isMoving && !v_isSwitching) {
             //StartCoroutine calls move
             StartCoroutine(move());
         }
-        if (!isMoving && !isSwitching) {
+        if (!v_isMoving && !v_isSwitching) {
             StartCoroutine(move_tracks());
         }
     }
@@ -35,7 +35,7 @@ public class Villain_Move : MonoBehaviour
     IEnumerator move() {
         //bounds: -4.79 < x < 4.79
         exp = 1.1f;
-        isMoving = true; 
+        v_isMoving = true; 
         while(Input.GetKey(KeyCode.RightArrow) && transform.position.x < 4.79) {
             transform.position += exp * forward_speed * transform.right; 
             exp += 0.1f;
@@ -65,12 +65,12 @@ public class Villain_Move : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
 
-        isMoving = false;
+        v_isMoving = false;
     }
 
     IEnumerator move_tracks()
         {
-            isSwitching = true;
+            v_isSwitching = true;
             float scale = 0.25f;
 
             //go "up" if press up arrow
@@ -127,7 +127,13 @@ public class Villain_Move : MonoBehaviour
                 }
                 
             }
-            isSwitching =  false;
+            v_isSwitching =  false;
         }
     
+    private void OnTriggerEnter(Collider target)
+    {
+        if(target.gameObject.tag.Equals("trolley") == true) {
+            Destroy(gameObject);
+        }
+    }
 }
