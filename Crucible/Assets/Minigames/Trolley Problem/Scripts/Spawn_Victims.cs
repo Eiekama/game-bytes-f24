@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,8 +23,8 @@ public class Spawn_Victims : MonoBehaviour
     }
 
     IEnumerator tie() {
-        
-        if(Input.GetKeyDown(KeyCode.Space) && !Villain_Move.v_isMoving && !Villain_Move.v_isSwitching) {
+        //&& !Villain_Move.v_isMoving && !Villain_Move.v_isSwitching
+        if(Input.GetKeyDown(KeyCode.Space)) {
             isTying = true;
             GameObject newVictim = Instantiate(victims, transform.position, Quaternion.identity);
             yield return new WaitForSeconds(0.5f);

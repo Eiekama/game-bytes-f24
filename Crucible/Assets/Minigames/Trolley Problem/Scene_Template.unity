@@ -236,6 +236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forward_speed: 0
+  explosion: {fileID: 1187236779702917980, guid: be2fe6ec41cf44b3fbe0c7b1c59cb5bd,
+    type: 3}
 --- !u!114 &117923318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,7 +622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Settings: {fileID: 11400000, guid: 54aae246c8e29834bbd5810fe72c6980, type: 2}
-  DurationSeconds: 20
+  DurationSeconds: 60
   WinOnTimeEnd: 0
   TimerPaused: 0
   TimerText: {fileID: 457074016}
@@ -1128,6 +1130,7 @@ MonoBehaviour:
   isMoving: 0
   forward_speed: 0
   isSpeeding: 0
+  trolley: {fileID: 1831675397}
 --- !u!65 &1831675399
 BoxCollider:
   m_ObjectHideFlags: 0

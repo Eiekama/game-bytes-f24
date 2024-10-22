@@ -47,7 +47,7 @@ public class Victim : MonoBehaviour
     private void OnTriggerEnter(Collider target)
     {
         if(target.gameObject.tag.Equals("trolley") == true) {
-            MinigameController.Instance.AddScore(2,1);
+            MinigameController.Instance.AddScore(2,3);
             trolley_rb.AddForce( transform.right * -200.0f, ForceMode.Impulse);
             trolley_rb.AddForce( transform.up * 200.0f, ForceMode.Impulse);
             stun = 1;

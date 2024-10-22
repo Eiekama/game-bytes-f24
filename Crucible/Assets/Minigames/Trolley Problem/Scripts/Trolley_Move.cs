@@ -1,3 +1,5 @@
+//TODO: NERF TROLLEY MOREEE
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,12 +13,15 @@ public class Trolley_Move : MonoBehaviour
     private float exp = 1.1f; //some exponential speed to make it feel better
     public float forward_speed; //base speed 
     public bool isSpeeding = false; //makes sure that the trolley can only speed up when its not already speeding (avoid super fast trolley bug)
-    static public float leftscroll = 0.005f;
+    static public float leftscroll = 0.01f;
+
+    [SerializeField] private GameObject trolley;
+    private Rigidbody trolley_rb;
 
     static public int track = 1; //collision purposes (trolley has no volume, just needs to be in same track to hit a guy)
     void Start()
     {
-        forward_speed = 0.01f; //manually set speed (testing says this works nice, subject to change)
+        forward_speed = 0.005f; //manually set speed (testing says this works nice, subject to change)
     }
     // Update is called once per frames
     //Can't be delayed, need booleans like isMoving to properly implement delays
@@ -31,6 +36,14 @@ public class Trolley_Move : MonoBehaviour
         //putting this seperate allows it to speed and switch at the same time
         if (!isSpeeding) {
             StartCoroutine(speed());
+        }
+        if (Villain_Move.EXPLODED == true) {
+            Debug.Log("Exploded");
+            trolley_rb = trolley.GetComponent<Rigidbody>();
+            Victim.stun = 1; 
+            trolley_rb.AddForce( transform.right * -800.0f, ForceMode.Impulse);
+            trolley_rb.AddForce( transform.up * 400.0f, ForceMode.Impulse);
+            Villain_Move.EXPLODED = false;
         }
     }
     //for speeding up to the right

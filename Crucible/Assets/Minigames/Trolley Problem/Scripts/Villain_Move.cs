@@ -1,3 +1,5 @@
+//TODO: BUFF VILLAIN, EASIER POINT COLLECTION
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,10 +13,15 @@ public class Villain_Move : MonoBehaviour
     static public bool v_isMoving = false; //makes sure that the villain can only move up when its not already moving (avoid super fast villain bug)
     static public bool v_isSwitching = false;
 
+    static public bool EXPLODED = false;
+
+    [SerializeField]
+    private GameObject explosion;
+
     static public int vtrack = 1; //collision purposes (villain has no volume, just needs to be in same track to hit the trolley)
     void Start()
     {
-        forward_speed = 0.005f; //manually set speed (testing says this works nice, subject to change)
+        forward_speed = 0.01f; //manually set speed (testing says this works nice, subject to change)
     }
     // Update is called once per frames
     //Can't be delayed, need booleans like v_isMoving to properly implement delays
@@ -133,6 +140,10 @@ public class Villain_Move : MonoBehaviour
     private void OnTriggerEnter(Collider target)
     {
         if(target.gameObject.tag.Equals("trolley") == true) {
+            GameObject newExplosion = Instantiate(explosion, transform.position + transform.up * 3.7f, Quaternion.identity);
+            MinigameController.Instance.AddScore(2,1);
+            MinigameController.Instance.AddScore(1, 60 - (int) MinigameController.Instance.GetElapsedTime());
+            EXPLODED = true;
             Destroy(gameObject);
         }
     }
