@@ -9,9 +9,23 @@ public class Victim : MonoBehaviour
     public Rigidbody trolley_rb;
     static public int stun;
 
+    private int type;
+    SpriteRenderer m_SpriteRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
+        type = (int) Random.Range(1.0f, 3.99f);
+        m_SpriteRenderer = GetComponent<SpriteRenderer>();
+        
+        //1 = magenta = loved one, 2 = yellow = victim
+        if(type == 1) {
+            m_SpriteRenderer.color = Color.magenta;
+        }
+        else {
+            m_SpriteRenderer.color = Color.yellow;
+        }
+
         stun = 0;
         trolley = GameObject.FindGameObjectWithTag("real_trolley");
         trolley_rb = trolley.GetComponent<Rigidbody>();
@@ -47,7 +61,13 @@ public class Victim : MonoBehaviour
     private void OnTriggerEnter(Collider target)
     {
         if(target.gameObject.tag.Equals("trolley") == true) {
-            MinigameController.Instance.AddScore(2,3);
+            if(type == 1) {
+                MinigameController.Instance.AddScore(2,6);
+            }
+            else {
+                MinigameController.Instance.AddScore(1,3);
+            }
+
             trolley_rb.AddForce( transform.right * -200.0f, ForceMode.Impulse);
             trolley_rb.AddForce( transform.up * 200.0f, ForceMode.Impulse);
             stun = 1;

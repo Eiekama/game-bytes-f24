@@ -24,10 +24,10 @@ public class Spawn_Victims : MonoBehaviour
 
     IEnumerator tie() {
         //&& !Villain_Move.v_isMoving && !Villain_Move.v_isSwitching
-        if(Input.GetKeyDown(KeyCode.Space)) {
+        if(Input.GetKeyDown(KeyCode.Space) && !Villain_Move.v_isSwitching) {
             isTying = true;
             GameObject newVictim = Instantiate(victims, transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.25f);
             isTying = false;
         }
     }
