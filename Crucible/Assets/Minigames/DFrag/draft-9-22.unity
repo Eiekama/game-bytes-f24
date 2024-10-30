@@ -157,20 +157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488255d345c89824bbff99e656617b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 0}
-  walkSpeed: 6
-  runSpeed: 12
-  jumpPower: 7
-  gravity: 10
-  lookSpeed: 2
-  lookXLimit: 45
-  defaultHeight: 2
-  crouchHeight: 1
-  crouchSpeed: 3
-  moveDirection: {x: 0, y: 0, z: 0}
-  rotationX: 0
-  characterController: {fileID: 0}
-  canMove: 1
 --- !u!143 &41091283
 CharacterController:
   m_ObjectHideFlags: 0
@@ -230,16 +216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584d4197fe75cb44f82053a9935d8b7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 918099186}
-  attackPoint: {fileID: 1248476477}
-  objectToThrow: {fileID: 1948140874454327311, guid: 254a43692c0d53a4e89009fff7200476,
-    type: 3}
-  totalThrows: 10
-  throwCooldown: 0.1
-  throwKey: 32
-  throwForce: 70
-  throwUpwardForce: 20
-  readyToThrow: 0
 --- !u!114 &41091287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff3772e68fa77c47a3e8b4630f26277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 918099188}
   walkSpeed: 6
   runSpeed: 12
   jumpPower: 7
@@ -920,6 +896,41 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1f1f5c368311f4236903a5dd82b1cee7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ec8b197ee0e84d0bb461c0f14e376d6, type: 3}
+--- !u!1 &635788070 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ec8b197ee0e84d0bb461c0f14e376d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 529247626}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &635788071
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635788070}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &635788072
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635788070}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &687432238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,6 +1329,41 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768164795}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &844950000 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ec8b197ee0e84d0bb461c0f14e376d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1087332471}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &844950001
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844950000}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &844950002
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844950000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &882459062
 GameObject:
   m_ObjectHideFlags: 0
@@ -2488,16 +2534,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584d4197fe75cb44f82053a9935d8b7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 918099186}
-  attackPoint: {fileID: 1989377025}
-  objectToThrow: {fileID: 1948140874454327311, guid: 254a43692c0d53a4e89009fff7200476,
-    type: 3}
-  totalThrows: 10
-  throwCooldown: 0.1
-  throwKey: 32
-  throwForce: 70
-  throwUpwardForce: 20
-  readyToThrow: 0
 --- !u!114 &1436405290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2510,20 +2546,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488255d345c89824bbff99e656617b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 0}
-  walkSpeed: 6
-  runSpeed: 12
-  jumpPower: 7
-  gravity: 10
-  lookSpeed: 2
-  lookXLimit: 45
-  defaultHeight: 2
-  crouchHeight: 1
-  crouchSpeed: 3
-  moveDirection: {x: 0, y: 0, z: 0}
-  rotationX: 0
-  characterController: {fileID: 0}
-  canMove: 1
 --- !u!143 &1436405291
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2583,7 +2605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fd49518123bed498257642e0df3a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 1390623863}
   walkSpeed: 6
   runSpeed: 12
   jumpPower: 7
@@ -2614,6 +2636,25 @@ MonoBehaviour:
   throwKey: 303
   throwForce: 30
   throwUpwardForce: 15
+--- !u!1 &1471543594 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8be3b12ca7a0e46589e509d38adc2609,
+    type: 3}
+  m_PrefabInstance: {fileID: 1725135891}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1471543598
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471543594}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.026661327, y: 0.031365715, z: 0.02}
+  m_Center: {x: 0, y: 0.00049425144, z: 0}
 --- !u!1 &1482033094
 GameObject:
   m_ObjectHideFlags: 0
