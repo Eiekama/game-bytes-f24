@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class Victim : MonoBehaviour
 {
+    [SerializeField] Animator animator;
+
     public int victim_track = 1;
     public GameObject trolley;
     public Rigidbody trolley_rb;
     static public int stun;
+
+    public GameObject villain;
+    public Rigidbody villain_rb;
+
+    public Rigidbody victim_rb;
 
     private int type;
     SpriteRenderer m_SpriteRenderer;
@@ -21,14 +28,21 @@ public class Victim : MonoBehaviour
         //1 = magenta = loved one, 2 = yellow = victim
         if(type == 1) {
             m_SpriteRenderer.color = Color.magenta;
+            animator.SetInteger("ANIM_Type", 1);
         }
         else {
             m_SpriteRenderer.color = Color.yellow;
+            animator.SetInteger("ANIM_Type", 0);
         }
 
         stun = 0;
         trolley = GameObject.FindGameObjectWithTag("real_trolley");
         trolley_rb = trolley.GetComponent<Rigidbody>();
+
+        villain = GameObject.FindGameObjectWithTag("villain");
+        villain_rb = villain.GetComponent<Rigidbody>();
+
+        victim_rb = GetComponent<Rigidbody>();
 
         if (-3.74 <= transform.position.z && transform.position.z <= -2.19) {
             victim_track = 1;
@@ -48,7 +62,12 @@ public class Victim : MonoBehaviour
     {
         StartCoroutine(slide());
         if (transform.position.x < -7.0f) {
-            MinigameController.Instance.AddScore(1,1);
+            if(type == 1) {
+                MinigameController.Instance.AddScore(1,4);
+            }
+            else {
+                MinigameController.Instance.AddScore(1,2);
+            }
             Destroy(gameObject);
         }
     }
@@ -62,16 +81,27 @@ public class Victim : MonoBehaviour
     {
         if(target.gameObject.tag.Equals("trolley") == true) {
             if(type == 1) {
-                MinigameController.Instance.AddScore(2,6);
+                MinigameController.Instance.AddScore(2,4);
             }
             else {
-                MinigameController.Instance.AddScore(1,3);
+                MinigameController.Instance.AddScore(2,2);
             }
 
-            trolley_rb.AddForce( transform.right * -200.0f, ForceMode.Impulse);
+            if(target.gameObject.transform.position.x > -5.0) {
+                trolley_rb.AddForce( transform.right * -200.0f, ForceMode.Impulse);
+            }
             trolley_rb.AddForce( transform.up * 200.0f, ForceMode.Impulse);
             stun = 1;
             Destroy(gameObject);
+        }
+        if(target.gameObject.tag.Equals("villain") == true) {
+            victim_rb.AddForce( transform.right * -50.0f, ForceMode.Impulse);
+            victim_rb.AddForce( transform.up * 20.0f, ForceMode.Impulse);
+        }
+
+        if(target.gameObject.tag.Equals("victim") == true) {
+            victim_rb.AddForce( transform.right * -50.0f, ForceMode.Impulse);
+            victim_rb.AddForce( transform.up * 50.0f, ForceMode.Impulse);
         }
     }
 }

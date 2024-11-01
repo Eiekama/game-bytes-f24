@@ -6,6 +6,8 @@ TagManager:
   tags:
   - trolley
   - real_trolley
+  - villain
+  - victim
   layers:
   - Default
   - TransparentFX

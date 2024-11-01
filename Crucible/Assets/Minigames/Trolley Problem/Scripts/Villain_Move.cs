@@ -21,7 +21,7 @@ public class Villain_Move : MonoBehaviour
     static public int vtrack = 1; //collision purposes (villain has no volume, just needs to be in same track to hit the trolley)
     void Start()
     {
-        forward_speed = 0.01f; //manually set speed (testing says this works nice, subject to change)
+        forward_speed = 0.03f; //manually set speed (testing says this works nice, subject to change)
     }
     // Update is called once per frames
     //Can't be delayed, need booleans like v_isMoving to properly implement delays
