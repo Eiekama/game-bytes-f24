@@ -63,17 +63,17 @@ public class Victim : MonoBehaviour
         StartCoroutine(slide());
         if (transform.position.x < -7.0f) {
             if(type == 1) {
-                MinigameController.Instance.AddScore(1,4);
+                MinigameController.Instance.AddScore(1,2);
             }
             else {
-                MinigameController.Instance.AddScore(1,2);
+                MinigameController.Instance.AddScore(1,1);
             }
             Destroy(gameObject);
         }
     }
     //for speeding up to the right
     IEnumerator slide() {
-        transform.position -= Trolley_Move.leftscroll * transform.right; 
+        transform.position -= Trolley_Move.leftscroll * new Vector3(1.0f, 0.0f, 0.0f); 
         yield return new WaitForSeconds(0.01f);
     }
 
@@ -95,12 +95,13 @@ public class Victim : MonoBehaviour
             Destroy(gameObject);
         }
         if(target.gameObject.tag.Equals("villain") == true) {
-            victim_rb.AddForce( transform.right * -50.0f, ForceMode.Impulse);
             victim_rb.AddForce( transform.up * 20.0f, ForceMode.Impulse);
+            victim_rb.AddForce( transform.right * -Random.Range(10.0f, 100.0f), ForceMode.Impulse);
+            
         }
 
         if(target.gameObject.tag.Equals("victim") == true) {
-            victim_rb.AddForce( transform.right * -50.0f, ForceMode.Impulse);
+            victim_rb.AddForce( transform.right * -Random.Range(10.0f, 100.0f), ForceMode.Impulse);
             victim_rb.AddForce( transform.up * 50.0f, ForceMode.Impulse);
         }
     }
