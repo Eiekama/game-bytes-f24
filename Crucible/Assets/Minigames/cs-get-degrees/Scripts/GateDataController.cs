@@ -151,7 +151,7 @@ public static class GateDataController
             }
             else if (String.Equals(op, "div"))
             {
-                gpa /= calc.amount/100;
+                if (gpa != 0) { gpa /= calc.amount / 100; }
             }
             else if (String.Equals(op, "exp"))
             {

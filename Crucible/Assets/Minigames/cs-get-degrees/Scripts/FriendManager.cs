@@ -56,7 +56,7 @@ public class FriendManager : MonoBehaviour
             }
             for (int col = 0; col < cols; col++)
             {
-                Debug.Log("rows: " + rows + ", cols: " + cols);
+                //Debug.Log("rows: " + rows + ", cols: " + cols);
 
                 Vector3 newLoc = playerLoc;
                 float spacing = (_trackSize) / cols;
@@ -64,19 +64,15 @@ public class FriendManager : MonoBehaviour
                 //Debug.Log("(" + col + " - " + cols + " / " + 2 + ") * " + spacing);
                 newLoc.x += (col - cols / 2) * spacing;
                 newLoc.z -= rowSpacing * (float)(row + 1);
-                playerFriends.ElementAt(i).friendObject.transform.position = newLoc;
+
+                if(playerFriends.Count - 1 >= i)
+                {
+                    playerFriends.ElementAt(i).friendObject.transform.position = newLoc;
+                }
                 i++;
             }
 
         }
-        //for (int i = 0; i < friendCount; i++)
-        //{
-        //    Vector3 newLoc = playerLoc;
-        //    float spacing = (_trackSize) / friendCount;
-
-        //    newLoc.x += (i - friendCount / 2) * spacing;
-        //    playerFriends.ElementAt(i).friendObject.transform.position = newLoc;
-        //}
     }
 
     // Returns _friends

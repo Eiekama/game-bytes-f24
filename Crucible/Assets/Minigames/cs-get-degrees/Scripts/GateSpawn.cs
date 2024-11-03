@@ -16,6 +16,7 @@ public class GateSpawn : MonoBehaviour
     private List<Transform> startLocs;
     Dictionary<GameObject, gateObject> gates;
     [SerializeField] List<GameObject> gatePrefabs;
+    [SerializeField] List<GameObject> alternateGates;
 
     // Start is called before the first frame update
     void Start()
@@ -89,6 +90,18 @@ public class GateSpawn : MonoBehaviour
 
     GameObject getGatePrefab(gateObject gate)
     {
-        return gatePrefabs.ElementAt(gate.gateCount - 1);
+        if (gate.gateCount == 1)
+        {
+            int rand = UnityEngine.Random.Range(0, 1);
+            if (rand == 0)
+            {
+                return alternateGates.ElementAt(0);
+            }
+            else
+            {
+                return gatePrefabs.ElementAt(gate.gateCount - 1);
+            }
+        }
+        else { return gatePrefabs.ElementAt(gate.gateCount - 1); }
     }
 }
