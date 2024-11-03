@@ -9,6 +9,8 @@ public class Villain_Move : MonoBehaviour
     // Start is called before the first frame update
 
     private float exp = 1.1f; //some exponential speed to make it feel better
+
+    private float max_accel = 4.5f; // bound how high exp can get
     public float forward_speed; //base speed 
     static public bool v_isMoving = false; //makes sure that the villain can only move up when its not already moving (avoid super fast villain bug)
     static public bool v_isSwitching = false;
@@ -28,13 +30,13 @@ public class Villain_Move : MonoBehaviour
     //ex: without v_isMoving, StartCoroutine(moveBack()) could be called over and over and over and over (buggy)
     void Update()
     {
-        //makes sure that it can only move if it isn't moving already (avoid super fast villain bug)
-        //can't move left/right and switch tracks at the same time
-        if (!v_isMoving && !v_isSwitching) {
+        // Horizontal movement
+        if (!v_isMoving) {
             //StartCoroutine calls move
             StartCoroutine(move());
         }
-        if (!v_isMoving && !v_isSwitching) {
+        // Rail/vertical movement
+        if (!v_isSwitching) {
             StartCoroutine(move_tracks());
         }
     }
@@ -45,14 +47,14 @@ public class Villain_Move : MonoBehaviour
         v_isMoving = true; 
         while(Input.GetKey(KeyCode.RightArrow) && transform.position.x < 4.79) {
             transform.position += exp * forward_speed * transform.right; 
-            exp += 0.1f;
+            exp += (exp < max_accel) ? 0.1f : 0.0f;
             yield return new WaitForSeconds(0.01f);
         }
         
         exp = 1.1f;
         while(Input.GetKey(KeyCode.LeftArrow) && transform.position.x > -4.79) {
             transform.position -= exp * forward_speed * transform.right; 
-            exp += 0.1f;
+            exp += (exp < max_accel) ? 0.1f : 0.0f;
             yield return new WaitForSeconds(0.01f);
         }
 
