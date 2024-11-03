@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Test Item 2
   m_EditorClassIdentifier: 
   Icon: {fileID: 0}
-  MaxStackSize: 1
+  MaxStackSize: 5
   ID: 0
   DisplayName: Test Item 2
   Description: This is Test Item 2.
+  ItemPrefab: {fileID: 1929534526897608, guid: 6b4895341818a7441baadd3778e5217e, type: 3}

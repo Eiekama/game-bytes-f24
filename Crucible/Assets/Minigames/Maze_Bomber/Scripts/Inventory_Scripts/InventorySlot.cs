@@ -26,7 +26,7 @@ public class InventorySlot
     public void ClearSlot()
     {
         itemData = null;
-        stackSize = -1; // null as well
+        stackSize = 0; // null as well
     }
 
     public void UpdateInventorySlot(InventoryItemData data, int amount)
@@ -55,5 +55,9 @@ public class InventorySlot
     public void RemoveFromStack(int amount)
     {
         stackSize -= amount;
+        if (stackSize <= 0)
+        {
+            ClearSlot();
+        }
     }
 }

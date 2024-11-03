@@ -19,3 +19,4 @@ MonoBehaviour:
   Description: 'This is Test Item 1.
 
 '
+  ItemPrefab: {fileID: 1929534526897608, guid: 6b4895341818a7441baadd3778e5217e, type: 3}

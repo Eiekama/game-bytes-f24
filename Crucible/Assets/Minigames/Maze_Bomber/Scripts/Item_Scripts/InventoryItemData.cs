@@ -12,4 +12,6 @@ public class InventoryItemData : ScriptableObject
     public string DisplayName;
     [TextArea(4, 4)]
     public string Description;
+
+    public GameObject ItemPrefab; // The 3D model or prefab to instantiate when dropping
 }
