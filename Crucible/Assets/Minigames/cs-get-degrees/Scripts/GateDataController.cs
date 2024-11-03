@@ -57,7 +57,7 @@ public static class GateDataController
 
             for (int i = 1; i < rowCount; i++)
             {
-                if (Int32.Parse(csvData[i][2]) == level) {
+                if (Int32.Parse(csvData[i][2]) <= level) {
                     workingList.Add(csvData[i]);
                 }
             }
@@ -101,9 +101,90 @@ public static class GateDataController
         if (calc.people)
         {
             people += tot;
-        } else
+            if (String.Equals(op, "mult"))
+            {
+                people *= calc.amount;
+            }
+            else if (String.Equals(op, "div"))
+            {
+                people /= calc.amount;
+            }
+            else if (String.Equals(op, "exp"))
+            {
+                people = (int)Math.Pow(people, calc.amount);
+            }
+            else if (String.Equals(op, "sqrt"))
+            {
+                people = (int)Math.Pow(people, 1.00 / (double)calc.amount);
+            }
+            else if (String.Equals(op, "e"))
+            {
+                people = (int)(calc.amount * Math.Log(people));
+            }
+            else if (String.Equals(op, "naln"))
+            {
+                people = (int)(calc.amount * Math.Pow(2.718281828459045f, people));
+            }
+            else if (String.Equals(op, "log"))
+            {
+                people = (int)(calc.amount * Math.Log10(people));
+            }
+            else if (String.Equals(op, "sin"))
+            {
+                people = (int)(calc.amount * Math.Sin(people));
+            }
+            else if (String.Equals(op, "cos"))
+            {
+                people = (int)(calc.amount * Math.Cos(people));
+            }
+            else if (String.Equals(op, "tan"))
+            {
+                people = (int)(calc.amount * Math.Tan(people));
+            }
+        }
+        else
         {
             gpa += tot;
+            if (String.Equals(op, "mult"))
+            {
+                gpa *= calc.amount/100;
+            }
+            else if (String.Equals(op, "div"))
+            {
+                gpa /= calc.amount/100;
+            }
+            else if (String.Equals(op, "exp"))
+            {
+                gpa = (int)Math.Pow(people, (calc.amount/100.0));
+            }
+            else if (String.Equals(op, "sqrt"))
+            {
+                gpa = (int)Math.Pow(people, 1.00 / (double)calc.amount);
+            }
+            else if (String.Equals(op, "e"))
+            {
+                gpa = (int)((calc.amount) * Math.Log(gpa));
+            }
+            else if (String.Equals(op, "naln"))
+            {
+                gpa = (int)(calc.amount * Math.Pow(2.718281828459045f, gpa));
+            }
+            else if (String.Equals(op, "log"))
+            {
+                gpa = (int)(calc.amount * Math.Log10(gpa));
+            }
+            else if (String.Equals(op, "sin"))
+            {
+                gpa = (int)(calc.amount * Math.Sin(gpa));
+            }
+            else if (String.Equals(op, "cos"))
+            {
+                gpa = (int)(calc.amount * Math.Cos(gpa));
+            }
+            else if (String.Equals(op, "tan"))
+            {
+                gpa = (int)(calc.amount * Math.Tan(gpa));
+            }
         }
         if (people < 0)
         {
@@ -156,17 +237,17 @@ public static class GateDataController
             {
                 int isGpa = UnityEngine.Random.Range(0, 100);
                 bool people;
-                people = isGpa > Int32.Parse(finalList[k][8]);
+                people = isGpa > Int32.Parse(finalList[j][8]);
                 int amount = 0;
                 if (people)
                 {
-                    amount = UnityEngine.Random.Range(Int32.Parse(finalList[k][11]), Int32.Parse(finalList[k][12]));
+                    amount = UnityEngine.Random.Range(Int32.Parse(finalList[j][11]), Int32.Parse(finalList[j][12]));
                 }
                 else
                 {
-                    amount = UnityEngine.Random.Range(Int32.Parse(finalList[k][9]), Int32.Parse(finalList[k][10]));
+                    amount = UnityEngine.Random.Range(Int32.Parse(finalList[j][9]), Int32.Parse(finalList[j][10]));
                 }
-                calcualation newCalc = new calcualation(finalList[k][1], amount, people);
+                calcualation newCalc = new calcualation(finalList[j][1], amount, people);
                 calcList.Add(newCalc);
                 totalPartition++;
             }
@@ -177,9 +258,9 @@ public static class GateDataController
         return returnGate;
     }
 
-    private static string strConvert(int d, bool gpa)
+    private static string strConvert(int d, bool gpa, bool noFormat = false)
     {
-        if (!gpa)
+        if (!gpa || noFormat)
         {
             return d.ToString();
         } else
@@ -205,6 +286,48 @@ public static class GateDataController
         {
             return "- " + strConvert(am, item == "gpa") + " " + item;
         }
+        if (op == "mult")
+        {
+            return "* " + strConvert(am, item == "gpa") + " " + item;
+        }
+        if (op == "div")
+        {
+            return "/ " + strConvert(am, item == "gpa") + " " + item;
+        }
+        if (op == "exp")
+        {
+            return "x^" + strConvert(am, item == "gpa") + " " + item;
+        }
+        if (op == "sqrt")
+        {
+            return "sqrt^" + strConvert(am, item == "gpa", true) + "(x) " + item;
+        }
+        if (op == "e")
+        {
+            return strConvert(am, item == "gpa", true) + "e^x " + item;
+        }
+        if (op == "naln")
+        {
+            return strConvert(am, item == "gpa", true) + "ln|x| " + item;
+        }
+        if (op == "log")
+        {
+            return strConvert(am, item == "gpa", true) + "log(x) " + item;
+        }
+        if (op == "sin")
+        {
+            return strConvert(am, item == "gpa", true) + "sin(x) " + item;
+        }
+        if (op == "cos")
+        {
+            return strConvert(am, item == "gpa", true) + "cos(x) " + item;
+        }
+        if (op == "tan")
+        {
+            return strConvert(am, item == "gpa", true) + "tan(x) " + item;
+        }
+
+
         return "ERROR";
     }
 }

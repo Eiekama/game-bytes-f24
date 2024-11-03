@@ -61,7 +61,7 @@ public class GateSpawn : MonoBehaviour
 
     IEnumerator makeGate()
     {
-        gateObject gate_object = GateDataController.getGateData(1);
+        gateObject gate_object = GateDataController.getGateData(5);
 
         //gate_object.gateCount = 1;
         //try
