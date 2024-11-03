@@ -48,6 +48,18 @@ public class MinigameController : UnitySingleton<MinigameController>
         }
     }
 
+    public void SetScore(int PlayerNum, int score)
+    {
+        if(PlayerNum == 1)
+        {
+            P1Score = score;
+        }
+        else if(PlayerNum == 2)
+        {
+            P2Score = score;
+        }
+    }
+
     public float GetElapsedTime()
     {
         return TimeElapsedSeconds;
