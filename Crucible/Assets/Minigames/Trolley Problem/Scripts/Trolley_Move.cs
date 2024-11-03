@@ -29,14 +29,16 @@ public class Trolley_Move : MonoBehaviour
     void Update()
     {
         //makes sure that it can only move if it isn't moving already
-        if (!isMoving) {
+        if (!isMoving && !isSpeeding) {
             //StartCoroutine calls move
             StartCoroutine(move_tracks());
         }
-        //putting this seperate allows it to speed and switch at the same time
-        if (!isSpeeding) {
+
+        // trolley can't switch tracks while accelerating
+        if (!isMoving && !isSpeeding) {
             StartCoroutine(speed());
         }
+        // boom!
         if (Villain_Move.EXPLODED == true) {
             Debug.Log("Exploded");
             trolley_rb = trolley.GetComponent<Rigidbody>();
