@@ -169,10 +169,10 @@ public class MinigameLauncherController : UnitySingleton<MinigameLauncherControl
             }
         }
 
-        if (Input.GetButtonDown("P1_ButtonQuit") || Input.GetButtonDown("P2_ButtonQuit"))
-        {
-            SceneTransitionController.Instance.TransitionToScene(settings.StartScene.ScenePath);
-        }
+        // if (Input.GetButtonDown("P1_ButtonQuit") || Input.GetButtonDown("P2_ButtonQuit"))
+        // {
+        //     SceneTransitionController.Instance.TransitionToScene(settings.StartScene.ScenePath);
+        // }
 
         if (P1Ready && P2Ready)
         {
