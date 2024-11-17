@@ -45,14 +45,14 @@ public class Villain_Move : MonoBehaviour
         //bounds: -4.79 < x < 4.79
         exp = 1.1f;
         v_isMoving = true; 
-        while(Input.GetKey(KeyCode.RightArrow) && transform.position.x < 4.79) {
+        while(Input.GetAxis("P2_Horizontal") > 0 && transform.position.x < 4.79) {
             transform.position += exp * forward_speed * transform.right; 
             exp += (exp < max_accel) ? 0.1f : 0.0f;
             yield return new WaitForSeconds(0.01f);
         }
         
         exp = 1.1f;
-        while(Input.GetKey(KeyCode.LeftArrow) && transform.position.x > -4.79) {
+        while(Input.GetAxis("P2_Horizontal") < 0 && transform.position.x > -4.79) {
             transform.position -= exp * forward_speed * transform.right; 
             exp += (exp < max_accel) ? 0.1f : 0.0f;
             yield return new WaitForSeconds(0.01f);
@@ -60,7 +60,7 @@ public class Villain_Move : MonoBehaviour
 
         while(transform.position.x > 4.79) {
             transform.position -= 0.0005f * transform.right; 
-            if(Input.GetKey(KeyCode.LeftArrow)) {
+            if(Input.GetAxis("P2_Horizontal") < 0) {
                 break;
             }
             yield return new WaitForSeconds(0.01f);
@@ -68,7 +68,7 @@ public class Villain_Move : MonoBehaviour
 
         while(transform.position.x < -4.79) {
             transform.position += 0.0005f * transform.right; 
-            if(Input.GetKey(KeyCode.RightArrow)) {
+            if(Input.GetAxis("P2_Horizontal") > 0) {
                 break;
             }
             yield return new WaitForSeconds(0.01f);
@@ -83,7 +83,7 @@ public class Villain_Move : MonoBehaviour
             float scale = 0.25f;
 
             //go "up" if press up arrow
-            while(Input.GetKey(KeyCode.UpArrow)) {
+            while(Input.GetAxis("P2_Vertical") > 0) {
                 //bounds on how much it can switch (only 4 tracks)
                 //for loops let it increment its location (animation but real time)
                 if (vtrack == 4) {
@@ -111,7 +111,7 @@ public class Villain_Move : MonoBehaviour
             }
 
             //go "down" if press down arrow
-            while(Input.GetKey(KeyCode.DownArrow)) {
+            while(Input.GetAxis("P2_Vertical") < 0) {
                 
                 if (vtrack == 1) {
                     for (float i = 0.01f; i <= 0.25f; i += 0.01f) {
@@ -146,17 +146,36 @@ public class Villain_Move : MonoBehaviour
             MinigameController.Instance.AddScore(2,1);
             MinigameController.Instance.AddScore(1, 60 - (int) MinigameController.Instance.GetElapsedTime());
             EXPLODED = true;
-            Destroy(gameObject);
+            
+
+            if(MinigameController.Instance.Score1Text)
+            {
+                MinigameController.Instance.Score1Text.SetText((MinigameController.Instance.GetScore(1)).ToString());
+            }
+
+            if(MinigameController.Instance.Score2Text)
+            {
+                MinigameController.Instance.Score2Text.SetText((MinigameController.Instance.GetScore(2)).ToString());
+            }
 
             if(MinigameController.Instance.GetScore(1) > MinigameController.Instance.GetScore(2)) {
+                Debug.Log(MinigameController.Instance.GetScore(1));
+                Debug.Log(MinigameController.Instance.GetScore(2));
+
                 MinigameController.Instance.FinishGame(LastMinigameFinish.P1WIN);
             }
             else if(MinigameController.Instance.GetScore(1) < MinigameController.Instance.GetScore(2)) {
+                Debug.Log(MinigameController.Instance.GetScore(1));
+                Debug.Log(MinigameController.Instance.GetScore(2));
                 MinigameController.Instance.FinishGame(LastMinigameFinish.P2WIN);
             }
             else {
+                Debug.Log(MinigameController.Instance.GetScore(1));
+                Debug.Log(MinigameController.Instance.GetScore(2));
                  MinigameController.Instance.FinishGame(LastMinigameFinish.TIE);
             }
+
+            Destroy(gameObject);
             
         }
     }

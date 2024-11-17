@@ -12,7 +12,9 @@ public class Trolley_Move : MonoBehaviour
     public bool isMoving = false; //makes sure trolley can only switch tracks when its not doing so already (avoid switching multiple tracks at once, messes stuff up)
     private float exp = 1.1f; //some exponential speed to make it feel better
     public float forward_speed; //base speed 
-    public bool isSpeeding = false; //makes sure that the trolley can only speed up when its not already speeding (avoid super fast trolley bug)
+    public bool isSpeeding = false; //makes sure that the trolley can only speed up when its not already speeding (avoid super fast trolley bug)\
+
+    public bool isScrolling = false;
     static public float leftscroll = 0.01f;
 
     [SerializeField] private GameObject trolley;
@@ -38,6 +40,12 @@ public class Trolley_Move : MonoBehaviour
         if (!isMoving && !isSpeeding) {
             StartCoroutine(speed());
         }
+        
+        if(!isScrolling && transform.position.x > -4.79)
+        {
+            StartCoroutine(scrolling());
+        }
+
         // boom!
         if (Villain_Move.EXPLODED == true) {
             Debug.Log("Exploded");
@@ -49,25 +57,38 @@ public class Trolley_Move : MonoBehaviour
         }
     }
     //for speeding up to the right
+    IEnumerator scrolling() {
+        transform.position -= leftscroll * transform.right; 
+        yield return new WaitForSeconds(0.01f);
+    }
+
     IEnumerator speed() {
         //bounds: -4.79 < x < 4.79
         isSpeeding = true; 
-        while(Input.GetKey(KeyCode.D) && transform.position.x < 4.79) {
+        
+        while(Input.GetAxis("P1_Horizontal") > 0 && transform.position.x < 4.79) {
+            isScrolling = true;
             transform.position += exp * forward_speed * transform.right; 
             exp += 0.1f;
             if (Victim.stun == 1) {
+                isScrolling = false;
                 Victim.stun = 0;
                 yield return new WaitForSeconds(0.3f);
                 break;
             }
             yield return new WaitForSeconds(0.01f);
         }
+        isScrolling = false;
         exp = 1.1f;
         isSpeeding = false;
         if(transform.position.x > -4.79) {
+            isScrolling = true;
             transform.position -= leftscroll * transform.right; 
             yield return new WaitForSeconds(0.01f);
+            isScrolling = false;
         }
+        
+        
     }
 
     //switching tracks
@@ -77,7 +98,7 @@ public class Trolley_Move : MonoBehaviour
             float scale = 0.25f;
 
             //go "up" if press W
-            while(Input.GetKey(KeyCode.W)) {
+            while(Input.GetAxis("P1_Vertical") > 0) {
                 //bounds on how much it can switch (only 4 tracks)
                 //for loops let it increment its location (animation but real time)
                 if (track == 4) {
@@ -110,7 +131,7 @@ public class Trolley_Move : MonoBehaviour
 
             //go "down" if press S
             //same code basically
-            while(Input.GetKey(KeyCode.S)) {
+            while(Input.GetAxis("P1_Vertical") < 0) {
                 
                 if (track == 1) {
                     for (float i = 0.01f; i <= 0.25f; i += 0.01f) {

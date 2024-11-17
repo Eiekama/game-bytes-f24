@@ -24,7 +24,7 @@ public class Spawn_Victims : MonoBehaviour
 
     IEnumerator tie() {
         //&& !Villain_Move.v_isMoving && !Villain_Move.v_isSwitching
-        if(Input.GetKeyDown(KeyCode.Space) && !Villain_Move.v_isSwitching) {
+        if(Input.GetButtonDown("P2_Button1") && !Villain_Move.v_isSwitching) {
             isTying = true;
             GameObject newVictim = Instantiate(victims, transform.position-(transform.right*0.5f), Quaternion.identity);
             yield return new WaitForSeconds(0.2f);
