@@ -147,6 +147,17 @@ public class Villain_Move : MonoBehaviour
             MinigameController.Instance.AddScore(1, 60 - (int) MinigameController.Instance.GetElapsedTime());
             EXPLODED = true;
             Destroy(gameObject);
+
+            if(MinigameController.Instance.GetScore(1) > MinigameController.Instance.GetScore(2)) {
+                MinigameController.Instance.FinishGame(LastMinigameFinish.P1WIN);
+            }
+            else if(MinigameController.Instance.GetScore(1) < MinigameController.Instance.GetScore(2)) {
+                MinigameController.Instance.FinishGame(LastMinigameFinish.P2WIN);
+            }
+            else {
+                 MinigameController.Instance.FinishGame(LastMinigameFinish.TIE);
+            }
+            
         }
     }
 }
