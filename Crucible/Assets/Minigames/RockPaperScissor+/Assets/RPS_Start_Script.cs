@@ -7,12 +7,15 @@ using UnityEngine.UI;
 public class RPS_Start_Script : UnitySingleton<RPS_Start_Script>
 {
     // Start is called before the first frame update
+    private AudioSource AUDIO;
     public int[] selection1 = new int[3];
     public int[] selection2 = new int[3];
     public int result = 0;
+    [SerializeField] Animator SlotAnimation1;
+    [SerializeField] Animator SlotAnimation2;
     void Start()
     {
-
+        AUDIO = GetComponent<AudioSource>();
     }
     // Update is called once per frame
    void Update()
@@ -170,6 +173,8 @@ public class RPS_Start_Script : UnitySingleton<RPS_Start_Script>
             GamePlayer.Instance.P2Score++;  
         } else {
         }  
+        SlotAnimation1.SetTrigger("trig");
+        SlotAnimation2.SetTrigger("trig");
         //GamePlayer.Instance.FinishGame();
         if(GamePlayer.Instance.P1Score == GamePlayer.Instance.P2Score)
         {
@@ -180,5 +185,7 @@ public class RPS_Start_Script : UnitySingleton<RPS_Start_Script>
             GamePlayer.Instance.FinishGame(GamePlayer.Instance.P1Score > GamePlayer.Instance.P2Score ? LastMinigameFinish.P1WIN : LastMinigameFinish.P2WIN);
         }        
         yield return new WaitForSeconds(1);
+
+        AUDIO.Play();
     }
 }

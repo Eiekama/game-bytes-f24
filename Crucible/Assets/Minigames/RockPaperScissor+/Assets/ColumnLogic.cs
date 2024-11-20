@@ -8,7 +8,7 @@ public class ColumnLogic : MonoBehaviour
     [SerializeField] private int player;
     [SerializeField] private int Column;
     private int selection = 0;
-    private int elements = 3;
+    private int elements = 12;
     private float moveSpeed = 0.817f;    
     private KeyCode a;
     private KeyCode b;    
