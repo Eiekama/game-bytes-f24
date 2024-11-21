@@ -15,9 +15,9 @@ public class SoundScript2 : MonoBehaviour
     void Update()
     {
         if (GamePlayer.Instance.GetElapsedTime() <= 29.9f){
-        if (Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.I)
-        ||Input.GetKeyDown(KeyCode.O) || Input.GetKeyDown(KeyCode.J)
-        ||Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.L))
+        if (Input.GetButtonDown("P2_Button1") || Input.GetButtonDown("P2_Button2")
+        ||Input.GetButtonDown("P2_Button3") || Input.GetButtonDown("P2_Button4")
+        ||Input.GetButtonDown("P2_Button5") || Input.GetButtonDown("P2_Button6"))
         Sor2.Play();
         }
     }
