@@ -26,59 +26,65 @@ public static class GateDataController
     public static gateObject getGateData(int level)
     {
         // Load the CSV file as a TextAsset (from Resources folder)
-        string filePath = Path.Combine(Application.dataPath,"Minigames","cs-get-degrees","StreamingAssets" ,"gates.csv");
-
+        //string filePath = Path.Combine(Application.dataPath,"Minigames","cs-get-degrees","StreamingAssets" ,"gates.csv");
+        string data = @"id,operation,level,levelProb,portionRequest,combine,combineProb,combineID,gpaProb,minGpa,maxGpa,minFri,maxFri$
+                        0,plus,1,50,4,TRUE,20,1 & 2,50,10,200,1,10$
+                        1,sub,1,50,2,TRUE,20,2,50,10,400,1,10$
+                        2,mult,2,50,2,TRUE,20,3,50,0,200,0,3$
+                        3,div,2,50,2,TRUE,20,0 & 1 & 2,50,10,200,1,3$
+                        4,exp,3,30,1,TRUE,20,1,50,0,200,0,4$
+                        5,sqrt,3,30,1,TRUE,20,1,50,2,3,2,3$
+                        6,log,4,15,1,TRUE,20,1,50,1,10,1,10$
+                        7,e,4,15,1,TRUE,20,1,50,1,10,1,3$
+                        8,naln,4,10,1,TRUE,20,1,50,1,20,1,20$
+                        9,sin,5,30,1,TRUE,20,1,50,1,20,1,20$
+                        9,cos,5,30,1,TRUE,20,1,50,1,20,1,20$
+                        9,tan,5,30,1,TRUE,20,1,50,1,20,1,20$
+                        10,con,6,30,1,TRUE,20,1,50,1,1,1,1";
         string[][] csvData;
         int rowCount = 0;
         int finalCount = 0;
         List<string[]> workingList = new List<string[]>();
         string[][] finalList;
 
-        if (File.Exists(filePath))
+        List<string[]> tempData = new List<string[]>();
+        // Read the file content
+        string[] rows = data.Split(new char[] {'$'});
+
+        // Parse each row
+        foreach (string row in rows)
         {
-            List<string[]> tempData = new List<string[]>();
-            // Read the file content
-            string[] rows = File.ReadAllLines(filePath);
-
-            // Parse each row
-            foreach (string row in rows)
+            string[] columns = row.Split(',');
+            tempData.Add(columns);
+            //Debug.Log(row);
+            /*// Output each column value
+            foreach (string column in columns)
             {
-                string[] columns = row.Split(',');
-                tempData.Add(columns);
-
-                /*// Output each column value
-                foreach (string column in columns)
-                {
-                    Debug.Log(column);
-                }*/
-            }
-            rowCount = tempData.Count;
-            csvData = tempData.ToArray();
-
-            for (int i = 1; i < rowCount; i++)
-            {
-                if (Int32.Parse(csvData[i][2]) <= level) {
-                    workingList.Add(csvData[i]);
-                }
-            }
-            finalCount = workingList.Count;
-            finalList = workingList.ToArray();
-
-            int[] gateData = new int[] {1,1,1,2,2,3};
-            int gateCount = UnityEngine.Random.Range(1, 4);
-            List<gateData> gates = new List<gateData>();
-            for (int i=0; i<gateCount;i++)
-            {
-                gates.Add(makeGate(finalList,finalCount));
-            }
-            gateObject returnData = new gateObject(gates, gateCount);
-            return returnData;
-
+                Debug.Log(column);
+            }*/
         }
-        else
+        rowCount = tempData.Count;
+        csvData = tempData.ToArray();
+
+        for (int i = 1; i < rowCount; i++)
         {
-            Debug.LogError("CSV file not found!");
+            if (Int32.Parse(csvData[i][2]) <= level)
+            {
+                workingList.Add(csvData[i]);
+            }
         }
+        finalCount = workingList.Count;
+        finalList = workingList.ToArray();
+
+        int[] gateData = new int[] { 1, 1, 1, 2, 2, 3 };
+        int gateCount = UnityEngine.Random.Range(1, 4);
+        List<gateData> gates = new List<gateData>();
+        for (int i = 0; i < gateCount; i++)
+        {
+            gates.Add(makeGate(finalList, finalCount));
+        }
+        gateObject returnData = new gateObject(gates, gateCount);
+        return returnData;
 
 
         return new gateObject(new List<gateData>(), 1);
@@ -107,7 +113,10 @@ public static class GateDataController
             }
             else if (String.Equals(op, "div"))
             {
-                people /= calc.amount;
+                if (calc.amount != 0)
+                {
+                    people /= calc.amount;
+                }
             }
             else if (String.Equals(op, "exp"))
             {
@@ -117,11 +126,14 @@ public static class GateDataController
             {
                 people = (int)Math.Pow(people, 1.00 / (double)calc.amount);
             }
-            else if (String.Equals(op, "e"))
-            {
-                people = (int)(calc.amount * Math.Log(people));
-            }
             else if (String.Equals(op, "naln"))
+            {
+                if (calc.amount != 0)
+                {
+                    people = (int)(calc.amount * Math.Log(people));
+                }
+            }
+            else if (String.Equals(op, "e"))
             {
                 people = (int)(calc.amount * Math.Pow(2.718281828459045f, people));
             }
@@ -151,7 +163,7 @@ public static class GateDataController
             }
             else if (String.Equals(op, "div"))
             {
-                if (calc.amount != 0) { gpa /= calc.amount / 100; }
+                if (calc.amount != 0) { gpa = ((int)((float)gpa / (calc.amount / 100.0f))); }
             }
             else if (String.Equals(op, "exp"))
             {
@@ -161,11 +173,11 @@ public static class GateDataController
             {
                 gpa = (int)Math.Pow(people, 1.00 / (double)calc.amount);
             }
-            else if (String.Equals(op, "e"))
-            {
-                gpa = (int)((calc.amount) * Math.Log(gpa));
-            }
             else if (String.Equals(op, "naln"))
+            {
+                if (calc.amount != 0) gpa = (int)((calc.amount) * Math.Log(gpa));
+            }
+            else if (String.Equals(op, "e"))
             {
                 gpa = (int)(calc.amount * Math.Pow(2.718281828459045f, gpa));
             }
@@ -269,11 +281,41 @@ public static class GateDataController
         }
     }
 
+    private static string string_to_exponent(string input)
+    {  
+        string[] superscripts = { "⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹", "˙"};
+        string total = "";
+        char[] split = input.ToCharArray();
+        for (int i=0; i<split.Length; i++)
+        {
+            if (split[i]=='.')
+            {
+                total += superscripts[10];
+            } else
+            {
+                total += superscripts[Int32.Parse(split[i].ToString())];
+            }
+
+        }
+        return total;
+
+    }
+
+    private static string hide_one(string input)
+    {
+        if (input == "1" || input == "1.00")
+        {
+            return "";
+        }
+        return input;
+    }
+
     public static string convertCalculationToText(calcualation calc)
     {
         string op = calc.calc;
         string item = calc.people ? "friend" : "gpa";
         int am = calc.amount;
+
         if (String.Equals(item, "friend") && am > 1)
         {
             item = "friends";
@@ -296,35 +338,39 @@ public static class GateDataController
         }
         if (op == "exp")
         {
-            return "x^" + strConvert(am, item == "gpa") + " " + item;
+            return "x" + string_to_exponent(strConvert(am, item == "gpa")) + " " + item;
         }
         if (op == "sqrt")
         {
-            return "sqrt^" + strConvert(am, item == "gpa", true) + "(x) " + item;
+            if (am == 3)
+            {
+                return "∛" + "x " + item;
+            }
+            return "√" + "x " + item;
         }
         if (op == "e")
         {
-            return strConvert(am, item == "gpa", true) + "e^x " + item;
+            return hide_one(strConvert(am, item == "gpa", true)) + "eˣ " + item;
         }
         if (op == "naln")
         {
-            return strConvert(am, item == "gpa", true) + "ln|x| " + item;
+            return hide_one(strConvert(am, item == "gpa", true)) + "ln|x| " + item;
         }
         if (op == "log")
         {
-            return strConvert(am, item == "gpa", true) + "log(x) " + item;
+            return hide_one(strConvert(am, item == "gpa", true)) + "log(x) " + item;
         }
         if (op == "sin")
         {
-            return strConvert(am, item == "gpa", true) + "sin(x) " + item;
+            return hide_one(strConvert(am, item == "gpa", true)) + "sin(x) " + item;
         }
         if (op == "cos")
         {
-            return strConvert(am, item == "gpa", true) + "cos(x) " + item;
+            return hide_one(strConvert(am, item == "gpa", true)) + "cos(x) " + item;
         }
         if (op == "tan")
         {
-            return strConvert(am, item == "gpa", true) + "tan(x) " + item;
+            return hide_one(strConvert(am, item == "gpa", true)) + "tan(x) " + item;
         }
 
 

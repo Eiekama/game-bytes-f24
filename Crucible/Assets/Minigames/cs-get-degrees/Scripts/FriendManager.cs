@@ -13,7 +13,7 @@ public class FriendManager : MonoBehaviour
     private int maxFriendsPerRow;
     [SerializeField] float rowSpacing;
     [SerializeField] List<GameObject> players;
-    [SerializeField] GameObject friendPrehab;
+    [SerializeField] List<GameObject> friendPrehabs;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +33,7 @@ public class FriendManager : MonoBehaviour
 
     public GameObject getFriendPrehab()
     {
-        return friendPrehab;
+        return friendPrehabs[0];
     }
 
     // Organizes friends from a player's friends list into the correct formation
@@ -84,6 +84,8 @@ public class FriendManager : MonoBehaviour
     // Sets size of a player's friends list
     public void setFriends(int count, GameObject player)
     {
+        //To prevent the game from crashing on crazy exponents
+        if (count > 100) count = 100;
         // Disgusting code, will fix later
         List<Friend> playerFriends = null;
         if (player == players.ElementAt(0)) { playerFriends = player1Friends; }
@@ -138,7 +140,7 @@ public class FriendManager : MonoBehaviour
     // Spawms a friend for specified player
     public GameObject SpawnFriend(GameObject player)
     {
-        GameObject friendObject = Instantiate(friendPrehab, player.transform.position, player.transform.rotation);
+        GameObject friendObject = Instantiate(friendPrehabs[player.name == "PlayerOne" ? 0:1], player.transform.position, player.transform.rotation);
         Friend friend = new Friend(friendObject, player);
         List<Friend> playerFriends = null;
 

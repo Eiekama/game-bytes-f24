@@ -92,14 +92,14 @@ public class GateSpawn : MonoBehaviour
     {
         if (gate.gateCount == 1)
         {
-            int rand = UnityEngine.Random.Range(0, 1);
+            int rand = UnityEngine.Random.Range(0, 2);
             if (rand == 0)
             {
                 return alternateGates.ElementAt(0);
             }
             else
             {
-                return gatePrefabs.ElementAt(gate.gateCount - 1);
+                return alternateGates.ElementAt(1);
             }
         }
         else { return gatePrefabs.ElementAt(gate.gateCount - 1); }
