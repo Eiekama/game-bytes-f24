@@ -3473,7 +3473,7 @@ MonoBehaviour:
   MinigameThumbnail: {fileID: 1041585533}
   CountdownTimerDuration: 3
   QuitTimerDuration: 1.5
-  DEBUG_MinigamePreview: {fileID: 11400000, guid: fd38740d239bd6a4f8f3b138c374d95e,
+  DEBUG_MinigamePreview: {fileID: 11400000, guid: 49180be75d276454c86172a7905759b3,
     type: 2}
 --- !u!114 &1069524664
 MonoBehaviour:
