@@ -6,6 +6,10 @@ TagManager:
   tags:
   - holes
   - barrier
+  - trolley
+  - real_trolley
+  - villain
+  - victim
   layers:
   - Default
   - TransparentFX
@@ -19,9 +23,9 @@ TagManager:
   - Shotpot_Food
   - Marble
   - 
-  - 
-  - 
-  - 
+  - Machine
+  - Objects
+  - Background
   - 
   - 
   - 
@@ -40,6 +44,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Machine
+    uniqueID: 1415063643
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
