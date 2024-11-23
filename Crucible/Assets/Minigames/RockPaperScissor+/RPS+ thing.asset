@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: RPS+ thing
   m_EditorClassIdentifier: 
   Name: Rock Paper Scissors+
-  Description: This is just a test of the minigame player functionality to make sure
-    everything works.
+  Description: A new and expanded version of rock, paper and scrissors, featuring
+    your exam paper, OSHA, and a gecko ...?
   Year: 2024
   Semester: 0
   Thumbnail: {fileID: 21300000, guid: 05d2b34c5d3a365448761905bbad7958, type: 3}
