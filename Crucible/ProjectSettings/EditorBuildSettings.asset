@@ -77,4 +77,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Minigames/RockPaperScissor+/RPS Game Scene Updated.unity
     guid: dd27d525c46792544af77b3950f39ac1
+  - enabled: 1
+    path: Assets/Minigames/cs-get-degrees/cs_get_degrees.unity
+    guid: 1e8359059ad86444ab0564ff62cee8a0
+  - enabled: 1
+    path: Assets/Minigames/Trolley Problem/Trolley_Problem.unity
+    guid: 656a56787612c44519fa2939fe7d4650
   m_configObjects: {}

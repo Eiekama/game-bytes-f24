@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - holes
+  - barrier
+  - trolley
+  - real_trolley
+  - villain
+  - victim
   layers:
   - Default
   - TransparentFX

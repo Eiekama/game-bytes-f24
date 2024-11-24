@@ -147,7 +147,7 @@ TextureImporter:
       213: -362482549422238116
     second: beam_47
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -167,6 +167,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -175,9 +177,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -198,9 +200,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -1247,6 +1253,55 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      beam_8: 7709028374666010373
+      beam_9: 1912605994617385628
+      beam_36: 5315725393033872281
+      beam_0: 4006551286565287207
+      beam_27: 2809384426234592701
+      beam_46: 3906361898892606118
+      beam_5: 3960427051749184184
+      beam_19: 6525549247049880469
+      beam_26: -7570473251476189246
+      beam_42: -1820937318286643088
+      beam_39: 942434994292513548
+      beam_11: -8033933322240548078
+      beam_13: -6507928898516013630
+      beam_4: 5249523285785724291
+      beam_41: 899000500056951851
+      beam_35: -7827850134402958373
+      beam_7: -552809242341326269
+      beam_34: 7197663089396435342
+      beam_12: 934634582214136637
+      beam_2: -2816658364780257087
+      beam_23: 2568141018501699686
+      beam_38: 5213194934226409241
+      beam_30: 444676931535052893
+      beam_10: -3951526066319773927
+      beam_29: 1867815884602187670
+      beam_28: -5725337149401779694
+      beam_37: 8723511051431973322
+      beam_3: -5406737540620898199
+      beam_43: -5816450756093381759
+      beam_22: -6714951414009998882
+      beam_15: 566772466038580551
+      beam_6: 3773738591938784927
+      beam_16: 9062929621789879255
+      beam_45: 2477129628804940298
+      beam_47: -362482549422238116
+      beam_14: 7446580463807078350
+      beam_18: -3416347730375082490
+      beam_24: -213807226911420565
+      beam_21: -326394107376929272
+      beam_20: 5167584462969403955
+      beam_17: -467993808480137434
+      beam_25: -8884049507282306791
+      beam_40: -3920444766980275415
+      beam_44: -7292612482616402996
+      beam_31: 7076451863320161578
+      beam_33: 7549911933737522495
+      beam_32: -120357951694658436
+      beam_1: -6950973007941179836
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

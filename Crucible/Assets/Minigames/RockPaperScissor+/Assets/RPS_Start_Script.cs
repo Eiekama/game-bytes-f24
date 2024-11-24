@@ -21,61 +21,61 @@ public class RPS_Start_Script : UnitySingleton<RPS_Start_Script>
    void Update()
     {
         if (GamePlayer.Instance.GetElapsedTime() <= 29.9f){
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetButtonDown("P1_Button1"))
         {
             selection1[0] = (selection1[0]+1) % 12;
         }
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetButtonDown("P1_Button2"))
         {
             selection1[1] = (selection1[1]+1) % 12;
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetButtonDown("P1_Button3"))
         {
             selection1[2] = (selection1[2]+1) % 12;
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetButtonDown("P1_Button4"))
         {
             selection1[0] = (selection1[0]-1) % 12;
             if(selection1[0] < 0)
                 selection1[0]+=12;
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetButtonDown("P1_Button5"))
         {
             selection1[1] = (selection1[1]-1) % 12;
             if(selection1[1] < 0)
                 selection1[1]+=12;
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetButtonDown("P1_Button6"))
         {    
             selection1[2] = (selection1[2]-1) % 12;
             if(selection1[2] < 0)
                 selection1[2]+=12;
         }
-        if (Input.GetKeyDown(KeyCode.U))
+        if (Input.GetButtonDown("P2_Button1"))
         {
             selection2[0] = (selection2[0]+1) % 12;
         }
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetButtonDown("P2_Button2"))
         {
             selection2[1] = (selection2[1]+1) % 12;
         }
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetButtonDown("P2_Button3"))
         {
             selection2[2] = (selection2[2]+1) % 12;
         }
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetButtonDown("P2_Button4"))
         {
             selection2[0] = (selection2[0]-1) % 12;
             if(selection2[0] < 0)
                 selection2[0]+=12;
         }
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetButtonDown("P2_Button5"))
         {
             selection2[1] = (selection2[1]-1) % 12;
             if(selection2[1] < 0)
                 selection2[1]+=12;
         }
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetButtonDown("P2_Button6"))
         {
             selection2[2] = (selection2[2]-1) % 12;
             if(selection2[2] < 0)
