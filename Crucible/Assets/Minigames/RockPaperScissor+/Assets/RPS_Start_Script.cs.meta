@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 226c6df429e5319449e0bfb6a86e501e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Timer: {instanceID: 0}
+  - Score: {instanceID: 0}
+  - Rock: {fileID: 21300000, guid: 8e5fa00425de1aa4b893d982bf585ecf, type: 3}
+  - Paper: {fileID: 21300000, guid: d74c8bb5411191b48967d74eae9a5d0c, type: 3}
+  - Scissor: {fileID: 21300000, guid: 02c3efa59540fcd4ba48f86c1ee1cfdd, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
