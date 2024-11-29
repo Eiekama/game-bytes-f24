@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class FriendManager : MonoBehaviour
 {
-    private List<Friend> _friends;
-    private List<Friend> player1Friends;
-    private List<Friend> player2Friends;
+    private List<Friend> _friends = new List<Friend>();
+    private List<Friend> player1Friends = new List<Friend>();
+    private List<Friend> player2Friends = new List<Friend>();
     private float _trackSize;
     private int maxFriendsPerRow;
     [SerializeField] float rowSpacing;
@@ -20,10 +20,6 @@ public class FriendManager : MonoBehaviour
     {
         maxFriendsPerRow = 5;
         _trackSize = 3F;
-
-        _friends = new List<Friend>();
-        player1Friends = new List<Friend>();
-        player2Friends = new List<Friend>();
     }
     private void FixedUpdate()
     {

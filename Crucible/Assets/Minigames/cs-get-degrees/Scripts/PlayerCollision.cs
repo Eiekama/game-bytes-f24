@@ -18,7 +18,7 @@ public class PlayerCollision : MonoBehaviour
     }
     private void Start()
     {
-
+        _friendManager.setFriends(5, gameObject);
     }
 
     private void AddPlayer(GameObject player)
@@ -37,7 +37,10 @@ public class PlayerCollision : MonoBehaviour
         //Debug.Log(_friendManager.getFriends().Count + " " + cd.newPeople);
         //if (_friendManager.getPlayerFriends(gameObject).Count != cd.newPeople) 
         //{
-            _friendManager.setFriends(cd.newPeople, gameObject); 
+            _friendManager.setFriends(cd.newPeople, gameObject);
         //}
+        //Do animation for gate
+        Animator an = barrier.GetComponentsInChildren<Animator>()[0];
+        an.SetTrigger("Hit");
     }
 }

@@ -84,7 +84,7 @@ public class GateSpawn : MonoBehaviour
         //    e.ToString();
         //}
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.8f);
         StartCoroutine(makeGate());
     }
 
