@@ -21,14 +21,14 @@ MonoBehaviour:
   P1_Objective: Get the highest GPA!
   P2_Objective: Get the highest GPA!
   P1_JoystickDescription: Use to move side to side
-  P1_Button1Description: Win
+  P1_Button1Description: None
   P1_Button2Description: None
   P1_Button3Description: None
   P1_Button4Description: None
   P1_Button5Description: None
   P1_Button6Description: None
   P2_JoystickDescription: Use to move side to side
-  P2_Button1Description: Win
+  P2_Button1Description: None
   P2_Button2Description: None
   P2_Button3Description: None
   P2_Button4Description: None
@@ -36,6 +36,6 @@ MonoBehaviour:
   P2_Button6Description: None
   GameScene:
     sceneAsset: {fileID: 102900000, guid: 1e8359059ad86444ab0564ff62cee8a0, type: 3}
-    scenePath: Assets/Minigames/cs-get-degrees/Scene_Template.unity
-  SupportedGameModes: 6
-  ExcludeFromGameList: 1
+    scenePath: Assets/Minigames/cs-get-degrees/cs_get_degrees.unity
+  SupportedGameModes: 4
+  ExcludeFromGameList: 0
