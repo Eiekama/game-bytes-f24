@@ -150,7 +150,7 @@ public class RPS_Start_Script : UnitySingleton<RPS_Start_Script>
     }
 
     public IEnumerator play(){
-        compare(selection1[2],selection2[0]);
+        compare(selection1[0],selection2[0]);
         if (result == -1){
             GamePlayer.Instance.P1Score++;
         } else if (result == 1){
@@ -166,7 +166,7 @@ public class RPS_Start_Script : UnitySingleton<RPS_Start_Script>
         } else {
         }  
         result = 0;
-        compare(selection1[0],selection2[2]);
+        compare(selection1[2],selection2[2]);
         if (result == -1){
             GamePlayer.Instance.P1Score++;
         } else if (result == 1){
