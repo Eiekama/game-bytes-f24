@@ -23,6 +23,10 @@ public class Trolley_Move : MonoBehaviour
     static public int track = 1; //collision purposes (trolley has no volume, just needs to be in same track to hit a guy)
     void Start()
     {
+        // resetting static variables
+        track = 1;
+        leftscroll = 0.01f;
+        
         forward_speed = 0.005f; //manually set speed (testing says this works nice, subject to change)
     }
     // Update is called once per frames
