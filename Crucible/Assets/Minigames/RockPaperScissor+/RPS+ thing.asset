@@ -17,24 +17,24 @@ MonoBehaviour:
     your exam paper, OSHA, and a gecko ...?
   Year: 2024
   Semester: 0
-  Thumbnail: {fileID: 21300000, guid: 05d2b34c5d3a365448761905bbad7958, type: 3}
-  CreatorNames: Jimmy Zhang and Leyu Ding
-  P1_Objective: Beat your opponent
-  P2_Objective: Beat your opponent
+  Thumbnail: {fileID: 21300000, guid: ec55b7afc50404d9a8e3196d3d459ec0, type: 3}
+  CreatorNames: Jimmy Zhang, Leyu Ding
+  P1_Objective: Win 2 out of 3 of the simultaneously occuring matches
+  P2_Objective: Win 2 out of 3 of the simultaneously occuring matches
   P1_JoystickDescription: None
-  P1_Button1Description: Change selection
-  P1_Button2Description: Change selection
-  P1_Button3Description: Change selection
-  P1_Button4Description: Change selection
-  P1_Button5Description: Change selection
-  P1_Button6Description: Change selection
+  P1_Button1Description: Change 1
+  P1_Button2Description: Change 2
+  P1_Button3Description: Change 3
+  P1_Button4Description: Change 1
+  P1_Button5Description: Change 2
+  P1_Button6Description: Change 3
   P2_JoystickDescription: None
-  P2_Button1Description: Change selection
-  P2_Button2Description: Change selection
-  P2_Button3Description: Change selection
-  P2_Button4Description: Change selection
-  P2_Button5Description: Change selection
-  P2_Button6Description: Change selection
+  P2_Button1Description: Change 1
+  P2_Button2Description: Change 2
+  P2_Button3Description: Change 3
+  P2_Button4Description: Change 1
+  P2_Button5Description: Change 2
+  P2_Button6Description: Change 3
   GameScene:
     sceneAsset: {fileID: 102900000, guid: dd27d525c46792544af77b3950f39ac1, type: 3}
     scenePath: Assets/Minigames/RockPaperScissor+/RPS Game Scene Updated.unity
