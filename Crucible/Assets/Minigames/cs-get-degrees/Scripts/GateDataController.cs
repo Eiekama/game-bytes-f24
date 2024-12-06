@@ -99,23 +99,23 @@ public static class GateDataController
         string op = calc.calc;
         if (String.Equals(op, "plus"))
         {
-            tot += calc.amount;
+            tot += (int)calc.amount;
         } else if (String.Equals(op, "sub"))
         {
-            tot -= calc.amount;
+            tot -= (int)calc.amount;
         }
         if (calc.people)
         {
             people += tot;
             if (String.Equals(op, "mult"))
             {
-                people *= calc.amount;
+                people = (int)(people *  calc.amount);
             }
             else if (String.Equals(op, "div"))
             {
                 if (calc.amount != 0)
                 {
-                    people /= calc.amount;
+                    people = (int)(people * calc.amount);
                 }
             }
             else if (String.Equals(op, "exp"))
@@ -159,7 +159,7 @@ public static class GateDataController
             gpa += tot;
             if (String.Equals(op, "mult"))
             {
-                gpa *= calc.amount/100;
+                gpa *= (int)(calc.amount/100);
             }
             else if (String.Equals(op, "div"))
             {
@@ -314,7 +314,7 @@ public static class GateDataController
     {
         string op = calc.calc;
         string item = calc.people ? "friend" : "gpa";
-        int am = calc.amount;
+        int am = (int)calc.amount;
 
         if (String.Equals(item, "friend") && am > 1)
         {
@@ -407,7 +407,7 @@ public class gateObject
 public class calcualation
 {
     public string calc;
-    public int amount;
+    public float amount;
     public bool people;
     public calcualation(string c, int amount, bool people)
     {

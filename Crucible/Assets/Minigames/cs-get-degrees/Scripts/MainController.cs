@@ -5,10 +5,10 @@ using TMPro;
 
 public class MainController : MonoBehaviour
 {
-    private int friendsOne = 0;
-    private int gpaOne = 400; //between 0 and 400
-    private int friendsTwo = 0;
-    private int gpaTwo = 400; //between 0 and 400
+    private int friendsOne = 5;
+    private int gpaOne = 200; //between 0 and 400
+    private int friendsTwo = 5;
+    private int gpaTwo = 200; //between 0 and 400
     [SerializeField] private TextMeshProUGUI playerOneF;
     [SerializeField] private TextMeshProUGUI playerOneG;
     [SerializeField] private TextMeshProUGUI playerTwoF;
