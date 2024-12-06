@@ -18,17 +18,25 @@ MonoBehaviour:
   Year: 2024
   Semester: 0
   Thumbnail: {fileID: 21300000, guid: 7a69e630d439348da9ab1c59d1d30dd4, type: 3}
-  CreatorNames: Cara Moe, Sarah wang
+  CreatorNames: Cara Moe, Sarah Wang
   P1_Objective: Score more points than your opponent
   P2_Objective: Score more points than your opponent
-  P1_JoystickDescription: None
-  P1_Button1Description: Win
-  P1_Button2Description: None
-  P2_JoystickDescription: None
-  P2_Button1Description: Win
-  P2_Button2Description: None
+  P1_JoystickDescription: Move
+  P1_Button1Description: Jump
+  P1_Button2Description: Throw ball
+  P1_Button3Description: None
+  P1_Button4Description: None
+  P1_Button5Description: None
+  P1_Button6Description: None
+  P2_JoystickDescription: Move
+  P2_Button1Description: Jump
+  P2_Button2Description: Throw ball
+  P2_Button3Description: None
+  P2_Button4Description: None
+  P2_Button5Description: None
+  P2_Button6Description: None
   GameScene:
-    sceneAsset: {fileID: 102900000, guid: da97d35142268994f97934479625f405, type: 3}
-    scenePath: Assets/Minigames/_MinigameTemplate/Scene_Template.unity
+    sceneAsset: {fileID: 102900000, guid: 5eb446f358e789f46bbd9b4f8518519e, type: 3}
+    scenePath: Assets/Minigames/DFrag/draft-9-22.unity
   SupportedGameModes: 4
   ExcludeFromGameList: 1
