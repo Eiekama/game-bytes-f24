@@ -35,7 +35,6 @@ public class MinigameController : UnitySingleton<MinigameController>
     {
         return PlayerNum == 1 ? P1Score : (PlayerNum == 2 ? P2Score : 0);
     }
-
     public void AddScore(int PlayerNum, int AddScore)
     {
         if(PlayerNum == 1)
@@ -45,6 +44,18 @@ public class MinigameController : UnitySingleton<MinigameController>
         else if(PlayerNum == 2)
         {
             P2Score += AddScore;
+        }
+    }
+
+    public void SetScore(int PlayerNum, int score)
+    {
+        if(PlayerNum == 1)
+        {
+            P1Score = score;
+        }
+        else if(PlayerNum == 2)
+        {
+            P2Score = score;
         }
     }
 
