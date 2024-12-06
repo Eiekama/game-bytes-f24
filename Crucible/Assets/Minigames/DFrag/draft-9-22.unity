@@ -229,7 +229,7 @@ MonoBehaviour:
     type: 3}
   totalThrows: 100
   throwCooldown: 0.1
-  throwKey: 116
+  throwButton: P1_Button2
   throwForce: 32
   throwUpwardForce: 13
 --- !u!1001 &89075584
@@ -3187,7 +3187,7 @@ MonoBehaviour:
     type: 3}
   totalThrows: 100
   throwCooldown: 0.1
-  throwKey: 122
+  throwButton: P2_Button2
   throwForce: 32
   throwUpwardForce: 13
 --- !u!1 &1471543594 stripped
