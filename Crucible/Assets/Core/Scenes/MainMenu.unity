@@ -1709,7 +1709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Settings: {fileID: 11400000, guid: eceaa6236a73f46128778eeb5eed6d76, type: 2}
-  MinigamesPerGame: 3
+  MinigamesPerGame: 5
   DEBUG_MinigamesToLaunch: []
   DEBUG_TestGameMode: 4
 --- !u!1 &610036747

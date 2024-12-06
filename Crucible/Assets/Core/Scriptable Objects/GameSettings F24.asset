@@ -28,6 +28,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 49180be75d276454c86172a7905759b3, type: 2}
   - {fileID: 11400000, guid: 1d38b3fd78f7645d082518a52faad4a9, type: 2}
   - {fileID: 11400000, guid: a0ec7910eb2b8524398c65ee904566b1, type: 2}
+  - {fileID: 11400000, guid: 42fa7f382a9b444f18f07b0234a73d21, type: 2}
   GameEndGraphicsWait: 4
   WinGraphicsPrefab: {fileID: 3757004447918800238, guid: 0b75b10dfa7586f468171c39b7f0fb01,
     type: 3}
