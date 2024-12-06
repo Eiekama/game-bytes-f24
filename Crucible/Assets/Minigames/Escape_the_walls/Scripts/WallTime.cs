@@ -11,6 +11,7 @@ public class WallTime : MonoBehaviour
     public static float timer2;
     void Start()
     {
+        timer=Vector3.Distance(P1.transform.position,collide.ClosestPoint(P1.transform.position));
         timer2=Vector3.Distance(P1.transform.position,collide.ClosestPoint(P1.transform.position));
     }
 
@@ -19,6 +20,7 @@ public class WallTime : MonoBehaviour
     {
         timer=Vector3.Distance(P1.transform.position,collide.ClosestPoint(P1.transform.position));
         timer=System.Math.Min(timer,timer2);
+        timer2=timer;
     }
     public float getTimer()
     {

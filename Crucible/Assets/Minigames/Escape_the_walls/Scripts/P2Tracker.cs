@@ -7,9 +7,7 @@ public class P2Tracker : MonoBehaviour
     public GameObject P1;
     private float P1Distance;
     private float wallLength;
-
     private Quaternion orientation;
-
     public GameObject wall;
     public GameObject oval;
     float time;
@@ -19,6 +17,8 @@ public class P2Tracker : MonoBehaviour
     {
         //List<Vector2> pastlocations= new List<Vector2>();
         Quaternion orientation = wall.transform.rotation;
+        time=7;
+        ledger.Clear();
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class P2Tracker : MonoBehaviour
     {
         time=oval.GetComponent<WallTime>().getTimer();
         time=(float)(3+.7*(7-time));
-        if(Input.GetKey("e")){
+        if(Input.GetKey("r")){
             GameObject Wall = Instantiate(wall, P1.transform.position,orientation);
             StartCoroutine(waiter(time,Wall));
             ledger.Add(Wall);
@@ -44,7 +44,6 @@ public class P2Tracker : MonoBehaviour
         }
         int num = ledger.Count;
         for(int i=0;i<(num-35);i=i+1){
-            print(Vector3.Distance(pos,ledger[i].transform.position));
             if(Vector3.Distance(pos,ledger[i].transform.position)<.50){
                 for(int j=i;j<num;j=j+1){
                     Destroy(ledger[i]);
