@@ -16,8 +16,8 @@ MonoBehaviour:
   Description: Maneuver through gates to maximize GPA and minimize friends.
   Year: 2024
   Semester: 0
-  Thumbnail: {fileID: 21300000, guid: 05d2b34c5d3a365448761905bbad7958, type: 3}
-  CreatorNames: Jacob Nuttall and Luke Freimanis
+  Thumbnail: {fileID: 21300000, guid: e0305da833eb5402d8ad82b82d6c2451, type: 3}
+  CreatorNames: Jacob Nuttall, Luke Freimanis
   P1_Objective: Get the highest GPA!
   P2_Objective: Get the highest GPA!
   P1_JoystickDescription: Use to move side to side
