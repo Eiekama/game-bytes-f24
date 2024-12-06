@@ -30,7 +30,7 @@ public class Throwing1 : MonoBehaviour
     {
         if(Input.GetKeyDown(throwKey) && readyToThrow && totalThrows > 0)
         {
-            Debug.Log(Input.GetKeyDown(throwKey));
+            // Debug.Log(Input.GetKeyDown(throwKey));
             Throw();
         }
     }
